@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Translation;
+namespace Mornin\Bundle\TranslationBundle\Translation;
 
 use Symfony\Component\Config\Resource\ResourceInterface;
 
 /**
  * Class used to represent a translation resource coming from the database.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DatabaseFreshResource implements ResourceInterface
 {

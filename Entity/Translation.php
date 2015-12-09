@@ -1,15 +1,15 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Entity;
+namespace Mornin\Bundle\TranslationBundle\Entity;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Lexik\Bundle\TranslationBundle\Model\Translation as TranslationModel;
-use Lexik\Bundle\TranslationBundle\Manager\TranslationInterface;
+use Mornin\Bundle\TranslationBundle\Model\Translation as TranslationModel;
+use Mornin\Bundle\TranslationBundle\Manager\TranslationInterface;
 
 /**
  * @UniqueEntity(fields={"transUnit", "locale"})
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class Translation extends TranslationModel implements TranslationInterface
 {
@@ -19,7 +19,7 @@ class Translation extends TranslationModel implements TranslationInterface
     protected $id;
 
     /**
-     * @var Lexik\Bundle\TranslationBundle\Entity\TransUnit
+     * @var Mornin\Bundle\TranslationBundle\Entity\TransUnit
      */
     protected $transUnit;
 
@@ -36,9 +36,9 @@ class Translation extends TranslationModel implements TranslationInterface
     /**
      * Set transUnit
      *
-     * @param Lexik\Bundle\TranslationBundle\Entity\TransUnit $transUnit
+     * @param Mornin\Bundle\TranslationBundle\Entity\TransUnit $transUnit
      */
-    public function setTransUnit(\Lexik\Bundle\TranslationBundle\Model\TransUnit $transUnit)
+    public function setTransUnit(\Mornin\Bundle\TranslationBundle\Model\TransUnit $transUnit)
     {
         $this->transUnit = $transUnit;
     }
@@ -46,7 +46,7 @@ class Translation extends TranslationModel implements TranslationInterface
     /**
      * Get transUnit
      *
-     * @return Lexik\Bundle\TranslationBundle\Entity\TransUnit
+     * @return Mornin\Bundle\TranslationBundle\Entity\TransUnit
      */
     public function getTransUnit()
     {

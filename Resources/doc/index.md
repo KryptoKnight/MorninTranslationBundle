@@ -6,7 +6,7 @@ Add the bunde to your `composer.json` file:
 ```javascript
 require: {
     // ...
-    "lexik/translation-bundle": "~3.1"
+    "Mornin/translation-bundle": "~3.1"
 }
 ```
 
@@ -14,10 +14,10 @@ Or install directly through composer with:
 
 ```shell
 # Latest stable
-composer require lexik/translation-bundle ~3.1
+composer require Mornin/translation-bundle ~3.1
 
 # For latest unstable version
-composer require lexik/translation-bundle dev-master
+composer require Mornin/translation-bundle dev-master
 ```
 
 Then run a composer update:
@@ -25,7 +25,7 @@ Then run a composer update:
 ```shell
 composer update
 # OR
-composer update lexik/translation-bundle # to only update the bundle
+composer update Mornin/translation-bundle # to only update the bundle
 ```
 
 Register the bundle with your kernel:
@@ -34,7 +34,7 @@ Register the bundle with your kernel:
 // in AppKernel::registerBundles()
 $bundles = array(
     // ...
-    new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
+    new Mornin\Bundle\TranslationBundle\MorninTranslationBundle(),
     // ...
 );
 ```
@@ -54,7 +54,7 @@ You must ast least define the fallback locale(s) as for the `framework.translato
 
 ```yml
 # app/config/config.yml
-lexik_translation:
+Mornin_translation:
     fallback_locale: [en]         # (required) default locale(s) to use
     managed_locales: [en, fr, de] # (required) locales that the bundle have to manage
 ```
@@ -69,7 +69,7 @@ You can also define the name of the entity / document manager which uses [differ
 Note that MongoDB 2.0.0 or later is required if you choose to use MongoDB.
 
 ```yml
-lexik_translation:
+Mornin_translation:
     storage:
         type: orm                  # orm | mongodb | propel
         object_manager: something  # The name of the entity / document manager which uses different connection (see: http://symfony.com/doc/current/cookbook/doctrine/multiple_entity_managers.html)
@@ -79,8 +79,8 @@ lexik_translation:
 Change the layout used with the bundle's template:
 
 ```yml
-lexik_translation:
-    base_layout: "LexikTranslationBundle::layout.html.twig"
+Mornin_translation:
+    base_layout: "MorninTranslationBundle::layout.html.twig"
 ```
 
 You can customize the edition grid by using input text or textarea fields.
@@ -88,7 +88,7 @@ You can also shown/hidden similar columns on the grid. This means on the grid if
 (e.g.: if the col "en" is shown/hidden all "en_XX" cols will be shown/hidden too)
 
 ```yml
-lexik_translation:
+Mornin_translation:
     grid_input_type: text       # text|textarea
     grid_toggle_similar: false
 ```
@@ -97,7 +97,7 @@ If you export translation by using YAML, you can switch the following option to 
 (It is a little slower).
 
 ```yml
-lexik_translation:
+Mornin_translation:
     use_yml_tree: false
 ```
 
@@ -106,7 +106,7 @@ Note that if you use files + database, if a translation exists in both resources
 By default the bundle will only load resources for managed locales.
 
 ```yml
-lexik_translation:
+Mornin_translation:
     resources_registration:
         type:                 all  # all | files | database
         managed_locales_only: true
@@ -116,7 +116,7 @@ The two following options can be used if yo want the bundle automatically clear 
 To do this the bundle will checks the latest update date among the translations (in the database).
 
 ```yml
-lexik_translation:
+Mornin_translation:
     auto_cache_clean: false
     auto_cache_clean_interval: 600  # number of seconds to wait before trying to check if translations have changed in the database.
 ```
@@ -127,7 +127,7 @@ If you want to force the translations keys to appear in the grid you can enable 
 If you do so, while getting missing translations from a profile, if a key/domain pair does not exist in the database the bundle will create it.
 
 ```yml
-lexik_translation:
+Mornin_translation:
     dev_tools:
         enable: false
         create_missing: false
@@ -143,8 +143,8 @@ To use the translation edition page, add the routing file to you application:
 
 ```yml
 # app/config/routing.yml
-lexik_translation_edition:
-    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+Mornin_translation_edition:
+    resource: "@MorninTranslationBundle/Resources/config/routing.yml"
     prefix:   /my-prefix
 ```
 
@@ -164,7 +164,7 @@ Import translations
 
 To import translations files content into your database just run the following command:
 
-    ./app/console lexik:translations:import [bundleName] [--cache-clear] [--force] [--globals]
+    ./app/console Mornin:translations:import [bundleName] [--cache-clear] [--force] [--globals]
 
 This command will import all application and bundles translations files according to the `managed_locales` defined in configuration (it will also load tanslations from SF conponents).
 
@@ -186,7 +186,7 @@ Export translations
 
 To export translations from the database in to files run the following command:
 
-    ./app/console lexik:translations:export [--locales=en,de] [--domains=messages,validators] [--format=yml] [--case-insensitive]
+    ./app/console Mornin:translations:export [--locales=en,de] [--domains=messages,validators] [--format=yml] [--case-insensitive]
 
 This command will export all translations from the database in to files. A translation is exported in the same file (and format) it was imported in,
 except for vendors files which are exported in `app/Resources/translations/` and in this case the command will only export translations that changed.

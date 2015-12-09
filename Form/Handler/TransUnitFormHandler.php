@@ -1,18 +1,18 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Form\Handler;
+namespace Mornin\Bundle\TranslationBundle\Form\Handler;
 
-use Lexik\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
-use Lexik\Bundle\TranslationBundle\Manager\FileInterface;
-use Lexik\Bundle\TranslationBundle\Manager\FileManagerInterface;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
-use Lexik\Bundle\TranslationBundle\Propel\TransUnit as PropelTransUnit;
+use Mornin\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
+use Mornin\Bundle\TranslationBundle\Manager\FileInterface;
+use Mornin\Bundle\TranslationBundle\Manager\FileManagerInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Propel\TransUnit as PropelTransUnit;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitFormHandler implements FormHandlerInterface
 {

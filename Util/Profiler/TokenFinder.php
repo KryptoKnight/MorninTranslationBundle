@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Util\Profiler;
+namespace Mornin\Bundle\TranslationBundle\Util\Profiler;
 
 use Symfony\Component\HttpKernel\Profiler\Profiler;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TokenFinder
 {

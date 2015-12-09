@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Manager;
+namespace Mornin\Bundle\TranslationBundle\Manager;
 
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 
 /**
  * Manager for translations files.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  * @author Nikola Petkanski <nikola@petkanski.com>
  */
 class FileManager implements FileManagerInterface

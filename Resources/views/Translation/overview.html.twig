@@ -1,10 +1,10 @@
 {% extends layout %}
 
-{% trans_default_domain 'LexikTranslationBundle' %}
+{% trans_default_domain 'MorninTranslationBundle' %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/lexiktranslation/css/translation.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/Mornintranslation/css/translation.css') }}">
 {% endblock %}
 
 {% block title %}{{ 'overview.page_title'|trans }}{% endblock %}
@@ -16,7 +16,7 @@
                 <h1>
                     {{ 'overview.page_title'|trans }}
                     <div class="pull-right">
-                        <a href="{{ path('lexik_translation_grid') }}" role="button" class="btn btn-primary">
+                        <a href="{{ path('Mornin_translation_grid') }}" role="button" class="btn btn-primary">
                             <span class="glyphicon glyphicon-th"></span>
                             {{ 'overview.show_grid'|trans }}
                         </a>
@@ -80,5 +80,5 @@
 
 {% block javascript_footer %}
     {{ parent() }}
-    <script src="{{ asset('bundles/lexiktranslation/js/translation.js') }}"></script>
+    <script src="{{ asset('bundles/Mornintranslation/js/translation.js') }}"></script>
 {% endblock %}

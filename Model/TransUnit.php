@@ -1,16 +1,16 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Model;
+namespace Mornin\Bundle\TranslationBundle\Model;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Lexik\Bundle\TranslationBundle\Manager\TranslationInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TranslationInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * This class represent a trans unit which contain translations for a given domain and key.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 abstract class TransUnit
 {
@@ -110,9 +110,9 @@ abstract class TransUnit
     /**
      * Add translations
      *
-     * @param \Lexik\Bundle\TranslationBundle\Model\Translation $translations
+     * @param \Mornin\Bundle\TranslationBundle\Model\Translation $translations
      */
-    public function addTranslation(\Lexik\Bundle\TranslationBundle\Model\Translation $translation)
+    public function addTranslation(\Mornin\Bundle\TranslationBundle\Model\Translation $translation)
     {
         $this->translations[] = $translation;
     }
@@ -120,9 +120,9 @@ abstract class TransUnit
     /**
      * Remove translations
      *
-     * @param \Lexik\Bundle\TranslationBundle\Model\Translation $translations
+     * @param \Mornin\Bundle\TranslationBundle\Model\Translation $translations
      */
-    public function removeTranslation(\Lexik\Bundle\TranslationBundle\Model\Translation $translation)
+    public function removeTranslation(\Mornin\Bundle\TranslationBundle\Model\Translation $translation)
     {
         $this->translations->removeElement($translation);
     }
@@ -152,7 +152,7 @@ abstract class TransUnit
      * Return the content of translation for the given locale.
      *
      * @param string $locale
-     * @return \Lexik\Bundle\TranslationBundle\Model\Translation
+     * @return \Mornin\Bundle\TranslationBundle\Model\Translation
      */
     public function getTranslation($locale)
     {

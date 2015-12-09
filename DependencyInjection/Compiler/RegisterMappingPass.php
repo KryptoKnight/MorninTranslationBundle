@@ -1,8 +1,8 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\DependencyInjection\Compiler;
+namespace Mornin\Bundle\TranslationBundle\DependencyInjection\Compiler;
 
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 /**
  * Doctrine metadata pass to add a driver to load model class mapping.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class RegisterMappingPass implements CompilerPassInterface
 {
@@ -19,7 +19,7 @@ class RegisterMappingPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $storage = $container->getParameter('lexik_translation.storage');
+        $storage = $container->getParameter('Mornin_translation.storage');
 
         $name = empty($storage['object_manager']) ? 'default' : $storage['object_manager'];
 
@@ -29,14 +29,14 @@ class RegisterMappingPass implements CompilerPassInterface
         if (StorageInterface::STORAGE_ORM == $storage['type'] && $container->hasDefinition($ormDriverId)) {
             $container->getDefinition($ormDriverId)->addMethodCall(
                 'addDriver',
-                array(new Reference('lexik_translation.orm.metadata.xml'), 'Lexik\Bundle\TranslationBundle\Model')
+                array(new Reference('Mornin_translation.orm.metadata.xml'), 'Mornin\Bundle\TranslationBundle\Model')
             );
         }
 
         if (StorageInterface::STORAGE_MONGODB == $storage['type'] && $container->hasDefinition($mongodbDriverId)) {
             $container->getDefinition($mongodbDriverId)->addMethodCall(
                 'addDriver',
-                array(new Reference('lexik_translation.mongodb.metadata.xml'), 'Lexik\Bundle\TranslationBundle\Model')
+                array(new Reference('Mornin_translation.mongodb.metadata.xml'), 'Mornin\Bundle\TranslationBundle\Model')
             );
         }
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Form\Handler;
+namespace Mornin\Bundle\TranslationBundle\Form\Handler;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 interface FormHandlerInterface
 {

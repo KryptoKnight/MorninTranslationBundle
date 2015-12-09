@@ -1,19 +1,19 @@
-lexik_translation_overview:
+Mornin_translation_overview:
     path:     /
-    defaults: { _controller: "LexikTranslationBundle:Translation:overview" }
+    defaults: { _controller: "MorninTranslationBundle:Translation:overview" }
     methods:  [GET]
 
-lexik_translation_grid:
+Mornin_translation_grid:
     path:     /grid
-    defaults: { _controller: "LexikTranslationBundle:Translation:grid" }
+    defaults: { _controller: "MorninTranslationBundle:Translation:grid" }
     methods:  [GET]
 
-lexik_translation_new:
+Mornin_translation_new:
     path:     /new
-    defaults: { _controller: "LexikTranslationBundle:Translation:new" }
+    defaults: { _controller: "MorninTranslationBundle:Translation:new" }
     methods:  [GET, POST]
 
-lexik_translation_invalidate_cache:
+Mornin_translation_invalidate_cache:
     path:     /invalidate-cache
-    defaults: { _controller: "LexikTranslationBundle:Translation:invalidateCache" }
+    defaults: { _controller: "MorninTranslationBundle:Translation:invalidateCache" }
     methods:  [GET]

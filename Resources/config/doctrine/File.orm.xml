@@ -4,9 +4,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Lexik\Bundle\TranslationBundle\Entity\File"
-            table="lexik_translation_file"
-            repository-class="Lexik\Bundle\TranslationBundle\Entity\FileRepository">
+    <entity name="Mornin\Bundle\TranslationBundle\Entity\File"
+            table="Mornin_translation_file"
+            repository-class="Mornin\Bundle\TranslationBundle\Entity\FileRepository">
 
         <unique-constraints>
             <unique-constraint name="hash_idx" columns="hash" />
@@ -21,7 +21,7 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many field="translations" target-entity="Lexik\Bundle\TranslationBundle\Entity\Translation" mapped-by="file">
+        <one-to-many field="translations" target-entity="Mornin\Bundle\TranslationBundle\Entity\Translation" mapped-by="file">
             <cascade>
                 <cascade-persist/>
             </cascade>

@@ -1,12 +1,12 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Document;
+namespace Mornin\Bundle\TranslationBundle\Document;
 
-use Lexik\Bundle\TranslationBundle\Model\File as FileModel;
-use Lexik\Bundle\TranslationBundle\Manager\FileInterface;
+use Mornin\Bundle\TranslationBundle\Model\File as FileModel;
+use Mornin\Bundle\TranslationBundle\Manager\FileInterface;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class File extends FileModel implements FileInterface
 {

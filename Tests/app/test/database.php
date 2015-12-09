@@ -8,7 +8,7 @@ if (ORM_TYPE == "doctrine") {
                 'mappings' => array(
                     'Mapping' => array(
                         'type'      => 'xml',
-                        'prefix'    => 'Lexik\Bundle\TranslationBundle\Entity',
+                        'prefix'    => 'Mornin\Bundle\TranslationBundle\Entity',
                         'is_bundle' => false,
                         'dir'       => '%kernel.root_dir%/../../Resources/config/doctrine',
                     ),

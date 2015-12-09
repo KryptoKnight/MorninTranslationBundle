@@ -1,17 +1,17 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation\Manager;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation\Manager;
 
 use Doctrine\ODM\MongoDB\UnitOfWork as ODMUnitOfWork;
 use Doctrine\ORM\UnitOfWork as ORMUnitOfWork;
-use Lexik\Bundle\TranslationBundle\Manager\FileManager;
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
-use Lexik\Bundle\TranslationBundle\Propel\FileQuery;
+use Mornin\Bundle\TranslationBundle\Manager\FileManager;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Propel\FileQuery;
 
 /**
  * Unit test for FileManager.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class FileManagerTest extends BaseUnitTestCase
 {
@@ -26,18 +26,18 @@ class FileManagerTest extends BaseUnitTestCase
     private $dm;
 
     /**
-     * @var \Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage
+     * @var \Mornin\Bundle\TranslationBundle\Storage\DoctrineORMStorage
      */
     private $ormStorage;
 
     /**
-     * @var \Lexik\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage
+     * @var \Mornin\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage
      */
     private $odmStorage;
 
     /**
      *
-     * @var Lexik\Bundle\TranslationBundle\Storage\PropelStorage
+     * @var Mornin\Bundle\TranslationBundle\Storage\PropelStorage
      */
     private $propelStorage;
 

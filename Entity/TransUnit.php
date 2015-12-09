@@ -1,24 +1,24 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Entity;
+namespace Mornin\Bundle\TranslationBundle\Entity;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Lexik\Bundle\TranslationBundle\Model\TransUnit as TransUnitModel;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface;
+use Mornin\Bundle\TranslationBundle\Model\TransUnit as TransUnitModel;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface;
 
 /**
  * @UniqueEntity(fields={"key", "domain"})
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnit extends TransUnitModel implements TransUnitInterface
 {
     /**
      * Add translations
      *
-     * @param Lexik\Bundle\TranslationBundle\Entity\Translation $translations
+     * @param Mornin\Bundle\TranslationBundle\Entity\Translation $translations
      */
-    public function addTranslation(\Lexik\Bundle\TranslationBundle\Model\Translation $translation)
+    public function addTranslation(\Mornin\Bundle\TranslationBundle\Model\Translation $translation)
     {
         $translation->setTransUnit($this);
 

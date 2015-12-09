@@ -1,8 +1,8 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\DependencyInjection;
+namespace Mornin\Bundle\TranslationBundle\DependencyInjection;
 
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -11,7 +11,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class Configuration implements ConfigurationInterface
 {
@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('lexik_translation');
+        $rootNode = $treeBuilder->root('Mornin_translation');
 
         $storages = array(
             StorageInterface::STORAGE_ORM,
@@ -37,7 +37,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('base_layout')
                     ->cannotBeEmpty()
-                    ->defaultValue('LexikTranslationBundle::layout.html.twig')
+                    ->defaultValue('MorninTranslationBundle::layout.html.twig')
                 ->end()
 
                 ->arrayNode('fallback_locale')

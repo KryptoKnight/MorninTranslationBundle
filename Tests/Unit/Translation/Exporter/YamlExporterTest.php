@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation\Exporter;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation\Exporter;
 
-use Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter;
+use Mornin\Bundle\TranslationBundle\Translation\Exporter\YamlExporter;
 
 /**
  * YamlExporter tests.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class YamlExporterTest extends \PHPUnit_Framework_TestCase
 {

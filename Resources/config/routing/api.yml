@@ -1,14 +1,14 @@
-lexik_translation_list:
+Mornin_translation_list:
     path:     /translations
-    defaults: { _controller: "LexikTranslationBundle:Rest:list" }
+    defaults: { _controller: "MorninTranslationBundle:Rest:list" }
     methods:  [GET]
 
-lexik_translation_profiler:
+Mornin_translation_profiler:
     path:         /translations/profiler/{token}
-    defaults:     { _controller: "LexikTranslationBundle:Rest:listByProfile" }
+    defaults:     { _controller: "MorninTranslationBundle:Rest:listByProfile" }
     requirements: { _method: GET }
 
-lexik_translation_update:
+Mornin_translation_update:
     path:     /translations/{id}
-    defaults: { _controller: "LexikTranslationBundle:Rest:update" }
+    defaults: { _controller: "MorninTranslationBundle:Rest:update" }
     methods:  [PUT]

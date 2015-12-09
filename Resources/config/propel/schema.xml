@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd">
 
-    <table name="lexik_translation_file" phpName="File" namespace="Lexik\Bundle\TranslationBundle\Propel">
+    <table name="Mornin_translation_file" phpName="File" namespace="Mornin\Bundle\TranslationBundle\Propel">
         <behavior name="auto_add_pk" />
 
         <column name="domain" type="varchar" size="255" default="messages" required="true" />
@@ -13,7 +13,7 @@
         <column name="hash" type="varchar" size="255" />
     </table>
 
-    <table name="lexik_trans_unit" phpName="TransUnit" namespace="Lexik\Bundle\TranslationBundle\Propel">
+    <table name="Mornin_trans_unit" phpName="TransUnit" namespace="Mornin\Bundle\TranslationBundle\Propel">
         <behavior name="auto_add_pk">
             <parameter name="phpName" value="Id" />
         </behavior>
@@ -28,7 +28,7 @@
         </unique>
     </table>
 
-    <table name="lexik_trans_unit_translations" phpName="Translation" namespace="Lexik\Bundle\TranslationBundle\Propel">
+    <table name="Mornin_trans_unit_translations" phpName="Translation" namespace="Mornin\Bundle\TranslationBundle\Propel">
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />
 
@@ -42,10 +42,10 @@
             <unique-column name="locale" />
         </unique>
 
-        <foreign-key foreignTable="lexik_translation_file" onDelete="cascade">
+        <foreign-key foreignTable="Mornin_translation_file" onDelete="cascade">
             <reference local="file_id" foreign="id" />
         </foreign-key>
-        <foreign-key foreignTable="lexik_trans_unit" onDelete="cascade">
+        <foreign-key foreignTable="Mornin_trans_unit" onDelete="cascade">
             <reference local="trans_unit_id" foreign="id" />
         </foreign-key>
     </table>

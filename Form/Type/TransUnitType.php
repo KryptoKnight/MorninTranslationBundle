@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Form\Type;
+namespace Mornin\Bundle\TranslationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * TransUnit form type.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitType extends AbstractType
 {
@@ -50,7 +50,7 @@ class TransUnitType extends AbstractType
             'data_class'         => null,
             'domains'            => array('messages'),
             'translation_class'  => null,
-            'translation_domain' => 'LexikTranslationBundle',
+            'translation_domain' => 'MorninTranslationBundle',
         ));
     }
 

@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Lexik\Bundle\TranslationBundle\Model\Translation">
+    <mapped-superclass name="Mornin\Bundle\TranslationBundle\Model\Translation">
 
         <field name="locale" column="locale" type="string" length="10" />
 

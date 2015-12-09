@@ -1,18 +1,18 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Storage;
+namespace Mornin\Bundle\TranslationBundle\Storage;
 
-use Lexik\Bundle\TranslationBundle\Propel\FileQuery;
-use Lexik\Bundle\TranslationBundle\Propel\FileRepository;
-use Lexik\Bundle\TranslationBundle\Propel\TransUnitQuery;
-use Lexik\Bundle\TranslationBundle\Propel\TranslationQuery;
-use Lexik\Bundle\TranslationBundle\Propel\TransUnitRepository;
-use Lexik\Bundle\TranslationBundle\Propel\TranslationRepository;
+use Mornin\Bundle\TranslationBundle\Propel\FileQuery;
+use Mornin\Bundle\TranslationBundle\Propel\FileRepository;
+use Mornin\Bundle\TranslationBundle\Propel\TransUnitQuery;
+use Mornin\Bundle\TranslationBundle\Propel\TranslationQuery;
+use Mornin\Bundle\TranslationBundle\Propel\TransUnitRepository;
+use Mornin\Bundle\TranslationBundle\Propel\TranslationRepository;
 
 /**
  * Doctrine ORM storage class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class PropelStorage implements StorageInterface
 {
@@ -329,9 +329,9 @@ class PropelStorage implements StorageInterface
         }
 
         return
-            class_exists('Lexik\\Bundle\\TranslationBundle\\Propel\\om\\BaseFile') &&
-            class_exists('Lexik\\Bundle\\TranslationBundle\\Propel\\om\\BaseTranslation') &&
-            class_exists('Lexik\\Bundle\\TranslationBundle\\Propel\\om\\BaseTransUnit')
+            class_exists('Mornin\\Bundle\\TranslationBundle\\Propel\\om\\BaseFile') &&
+            class_exists('Mornin\\Bundle\\TranslationBundle\\Propel\\om\\BaseTranslation') &&
+            class_exists('Mornin\\Bundle\\TranslationBundle\\Propel\\om\\BaseTransUnit')
         ;
     }
 

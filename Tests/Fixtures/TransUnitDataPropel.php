@@ -1,18 +1,18 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Fixtures;
+namespace Mornin\Bundle\TranslationBundle\Tests\Fixtures;
 
-use Lexik\Bundle\TranslationBundle\Propel\FileQuery;
-use Lexik\Bundle\TranslationBundle\Propel\TranslationQuery;
-use Lexik\Bundle\TranslationBundle\Propel\TransUnitQuery;
-use Lexik\Bundle\TranslationBundle\Propel\File;
-use Lexik\Bundle\TranslationBundle\Propel\TransUnit;
-use Lexik\Bundle\TranslationBundle\Propel\Translation;
+use Mornin\Bundle\TranslationBundle\Propel\FileQuery;
+use Mornin\Bundle\TranslationBundle\Propel\TranslationQuery;
+use Mornin\Bundle\TranslationBundle\Propel\TransUnitQuery;
+use Mornin\Bundle\TranslationBundle\Propel\File;
+use Mornin\Bundle\TranslationBundle\Propel\TransUnit;
+use Mornin\Bundle\TranslationBundle\Propel\Translation;
 
 /**
  * Tests fixtures class for Propel.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitDataPropel
 {

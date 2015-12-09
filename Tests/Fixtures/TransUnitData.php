@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Fixtures;
+namespace Mornin\Bundle\TranslationBundle\Tests\Fixtures;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -8,7 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 /**
  * Tests fixtures class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitData implements FixtureInterface
 {
@@ -117,9 +117,9 @@ class TransUnitData implements FixtureInterface
         $instance = null;
 
         if ($manager instanceof \Doctrine\ORM\EntityManager) {
-            $instance = new \Lexik\Bundle\TranslationBundle\Entity\TransUnit();
+            $instance = new \Mornin\Bundle\TranslationBundle\Entity\TransUnit();
         } elseif ($manager instanceof \Doctrine\ODM\MongoDB\DocumentManager) {
-            $instance = new \Lexik\Bundle\TranslationBundle\Document\TransUnit();
+            $instance = new \Mornin\Bundle\TranslationBundle\Document\TransUnit();
         }
 
         return $instance;
@@ -135,9 +135,9 @@ class TransUnitData implements FixtureInterface
         $instance = null;
 
         if ($manager instanceof \Doctrine\ORM\EntityManager) {
-            $instance = new \Lexik\Bundle\TranslationBundle\Entity\Translation();
+            $instance = new \Mornin\Bundle\TranslationBundle\Entity\Translation();
         } elseif ($manager instanceof \Doctrine\ODM\MongoDB\DocumentManager) {
-            $instance = new \Lexik\Bundle\TranslationBundle\Document\Translation();
+            $instance = new \Mornin\Bundle\TranslationBundle\Document\Translation();
         }
 
         return $instance;
@@ -153,9 +153,9 @@ class TransUnitData implements FixtureInterface
         $instance = null;
 
         if ($manager instanceof \Doctrine\ORM\EntityManager) {
-            $instance = new \Lexik\Bundle\TranslationBundle\Entity\File();
+            $instance = new \Mornin\Bundle\TranslationBundle\Entity\File();
         } elseif ($manager instanceof \Doctrine\ODM\MongoDB\DocumentManager) {
-            $instance = new \Lexik\Bundle\TranslationBundle\Document\File();
+            $instance = new \Mornin\Bundle\TranslationBundle\Document\File();
         }
 
         return $instance;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation;
 
-use Lexik\Bundle\TranslationBundle\Translation\DatabaseFreshResource;
+use Mornin\Bundle\TranslationBundle\Translation\DatabaseFreshResource;
 
 /**
  * DatabaseFreshResource tests.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DatabaseFreshResourceTest extends \PHPUnit_Framework_TestCase
 {

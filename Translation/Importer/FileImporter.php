@@ -1,18 +1,18 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Translation\Importer;
+namespace Mornin\Bundle\TranslationBundle\Translation\Importer;
 
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
-use Lexik\Bundle\TranslationBundle\Document\TransUnit as TransUnitDocument;
-use Lexik\Bundle\TranslationBundle\Manager\FileManagerInterface;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface;
-use Lexik\Bundle\TranslationBundle\Manager\TranslationInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Document\TransUnit as TransUnitDocument;
+use Mornin\Bundle\TranslationBundle\Manager\FileManagerInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TranslationInterface;
 
 /**
  * Import a translation file into the database.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class FileImporter
 {
@@ -146,7 +146,7 @@ class FileImporter
 
         $this->storage->flush();
 
-        // clear only Lexik entities
+        // clear only Mornin entities
         foreach (array('file', 'trans_unit', 'translation') as $name) {
             $this->storage->clear($this->storage->getModelClass($name));
         }

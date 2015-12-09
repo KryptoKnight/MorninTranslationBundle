@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Repository\Document;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Repository\Document;
 
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
 
 /**
  * Unit test for TransUnit document's repository class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitRepositoryTest extends BaseUnitTestCase
 {

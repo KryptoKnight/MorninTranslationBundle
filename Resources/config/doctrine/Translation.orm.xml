@@ -4,9 +4,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Lexik\Bundle\TranslationBundle\Entity\Translation"
-            table="lexik_trans_unit_translations"
-            repository-class="Lexik\Bundle\TranslationBundle\Entity\TranslationRepository">
+    <entity name="Mornin\Bundle\TranslationBundle\Entity\Translation"
+            table="Mornin_trans_unit_translations"
+            repository-class="Mornin\Bundle\TranslationBundle\Entity\TranslationRepository">
 
         <unique-constraints>
             <unique-constraint name="trans_unit_locale_idx" columns="trans_unit_id,locale" />
@@ -21,11 +21,11 @@
             <generator strategy="IDENTITY"/>
         </id>
 
-        <many-to-one field="file" target-entity="Lexik\Bundle\TranslationBundle\Entity\File" inversed-by="translations">
+        <many-to-one field="file" target-entity="Mornin\Bundle\TranslationBundle\Entity\File" inversed-by="translations">
             <join-column name="file_id" referenced-column-name="id" />
         </many-to-one>
 
-        <many-to-one field="transUnit" target-entity="Lexik\Bundle\TranslationBundle\Entity\TransUnit" inversed-by="translations">
+        <many-to-one field="transUnit" target-entity="Mornin\Bundle\TranslationBundle\Entity\TransUnit" inversed-by="translations">
             <join-column name="trans_unit_id" referenced-column-name="id" />
         </many-to-one>
 

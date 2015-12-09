@@ -1,14 +1,14 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Util\DataGrid;
+namespace Mornin\Bundle\TranslationBundle\Util\DataGrid;
 
-use Lexik\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DataGridFormatter
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Storage;
+namespace Mornin\Bundle\TranslationBundle\Storage;
 
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 
 /**
  * Common doctrine storage logic.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 abstract class AbstractDoctrineStorage implements StorageInterface
 {

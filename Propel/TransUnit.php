@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Propel;
+namespace Mornin\Bundle\TranslationBundle\Propel;
 
-use Lexik\Bundle\TranslationBundle\Model\Translation;
-use Lexik\Bundle\TranslationBundle\Propel\om\BaseTransUnit;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface;
-use Lexik\Bundle\TranslationBundle\Manager\TranslationInterface;
+use Mornin\Bundle\TranslationBundle\Model\Translation;
+use Mornin\Bundle\TranslationBundle\Propel\om\BaseTransUnit;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TranslationInterface;
 
 class TransUnit extends BaseTransUnit implements TransUnitInterface
 {
@@ -26,7 +26,7 @@ class TransUnit extends BaseTransUnit implements TransUnitInterface
     }
 
     /** (non-PHPdoc)
-     * @see \Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface::hasTranslation()
+     * @see \Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface::hasTranslation()
      */
     public function hasTranslation($locale)
     {

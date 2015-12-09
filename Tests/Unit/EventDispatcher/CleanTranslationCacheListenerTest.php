@@ -1,8 +1,8 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\EventDispatcher;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\EventDispatcher;
 
-use Lexik\Bundle\TranslationBundle\EventDispatcher\CleanTranslationCacheListener;
+use Mornin\Bundle\TranslationBundle\EventDispatcher\CleanTranslationCacheListener;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +36,7 @@ class CleanTranslationCacheListenerTest extends \PHPUnit_Framework_TestCase
 
         \touch($this->tempDir . '/messages.en.yml', time() - 3600);
 
-        $storage = $this->getMockBuilder('Lexik\Bundle\TranslationBundle\Storage\StorageInterface')
+        $storage = $this->getMockBuilder('Mornin\Bundle\TranslationBundle\Storage\StorageInterface')
                 ->disableOriginalConstructor()
                 ->setMethods(array())
                 ->getMock();
@@ -45,7 +45,7 @@ class CleanTranslationCacheListenerTest extends \PHPUnit_Framework_TestCase
 
         $container = $this->getMock('Symfony\Component\DependencyInjection\ContainerInterface');
 
-        $translator = $this->getMock('Lexik\Bundle\TranslationBundle\Translation\Translator', array(), array($container, new MessageSelector));
+        $translator = $this->getMock('Mornin\Bundle\TranslationBundle\Translation\Translator', array(), array($container, new MessageSelector));
 
         $translator->expects($this->any())->method('removeLocalesCacheFiles')->will($this->returnValue(true));
 

@@ -4,9 +4,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Lexik\Bundle\TranslationBundle\Entity\TransUnit"
-            table="lexik_trans_unit"
-            repository-class="Lexik\Bundle\TranslationBundle\Entity\TransUnitRepository">
+    <entity name="Mornin\Bundle\TranslationBundle\Entity\TransUnit"
+            table="Mornin_trans_unit"
+            repository-class="Mornin\Bundle\TranslationBundle\Entity\TransUnitRepository">
 
         <unique-constraints>
             <unique-constraint name="key_domain_idx" columns="key_name,domain" />
@@ -21,7 +21,7 @@
             <generator strategy="IDENTITY" />
         </id>
 
-        <one-to-many field="translations" target-entity="Lexik\Bundle\TranslationBundle\Entity\Translation" mapped-by="transUnit">
+        <one-to-many field="translations" target-entity="Mornin\Bundle\TranslationBundle\Entity\Translation" mapped-by="transUnit">
             <cascade>
                 <cascade-all/>
             </cascade>

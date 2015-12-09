@@ -1,17 +1,17 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\EventDispatcher;
+namespace Mornin\Bundle\TranslationBundle\EventDispatcher;
 
-use Lexik\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class GetDatabaseResourcesListener
 {
     /**
-     * @var \Lexik\Bundle\TranslationBundle\Storage\StorageInterface
+     * @var \Mornin\Bundle\TranslationBundle\Storage\StorageInterface
      */
     private $storage;
 

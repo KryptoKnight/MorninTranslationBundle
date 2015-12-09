@@ -5,6 +5,6 @@ framework:
     fragments: ~
     secret: afasfsf
 
-lexik_translation:
+Mornin_translation:
     fallback_locale: en
     managed_locales: [en, pl, de, sv]

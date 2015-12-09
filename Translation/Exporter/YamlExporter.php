@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Translation\Exporter;
+namespace Mornin\Bundle\TranslationBundle\Translation\Exporter;
 
 use Symfony\Component\Yaml\Dumper;
 
 /**
  * Export translations to a Yaml file.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class YamlExporter implements ExporterInterface

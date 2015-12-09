@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Command;
+namespace Mornin\Bundle\TranslationBundle\Tests\Command;
 
 use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
 use Doctrine\Bundle\DoctrineBundle\Command\Proxy\DropSchemaDoctrineCommand;
@@ -9,13 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Tester\CommandTester;
-use Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand;
+use Mornin\Bundle\TranslationBundle\Command\ImportTranslationsCommand;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Test the translations import command, with option and arguments
  *
- * @covers Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand
+ * @covers Mornin\Bundle\TranslationBundle\Command\ImportTranslationsCommand
  */
 class ImportTranslationsCommandTest extends WebTestCase
 {
@@ -81,14 +81,14 @@ class ImportTranslationsCommandTest extends WebTestCase
     {
         static::$application->add(new ImportTranslationsCommand());
 
-        $command = static::$application->find("lexik:translations:import");
+        $command = static::$application->find("Mornin:translations:import");
         $command->setContainer(static::$kernel->getContainer());
 
         $commandTester = new CommandTester($command);
         $commandTester->execute(
             array(
                 'command'       => $command->getName(),
-                'bundle'        => 'LexikTranslationBundle',
+                'bundle'        => 'MorninTranslationBundle',
                 '--cache-clear' => true,
                 '--force'       => true,
                 '--locales'     => array('en', 'fr'),
@@ -97,10 +97,10 @@ class ImportTranslationsCommandTest extends WebTestCase
 
         $resultLines = explode("\n", $commandTester->getDisplay());
 
-        $this->assertEquals('# LexikTranslationBundle:', $resultLines[0]);
-        $this->assertRegExp('/Using dir (.)+(Lexik|Lexik\/Bundle\/)TranslationBundle\/Resources\/translations to lookup translation files/', $resultLines[1]);
-        $this->assertRegExp('/translations\/LexikTranslationBundle\.((fr)|(en))\.yml" \.\.\. 28 translations/', $resultLines[2]);
-        $this->assertRegExp('/translations\/LexikTranslationBundle\.((fr)|(en))\.yml" \.\.\. 28 translations/', $resultLines[3]);
+        $this->assertEquals('# MorninTranslationBundle:', $resultLines[0]);
+        $this->assertRegExp('/Using dir (.)+(Mornin|Mornin\/Bundle\/)TranslationBundle\/Resources\/translations to lookup translation files/', $resultLines[1]);
+        $this->assertRegExp('/translations\/MorninTranslationBundle\.((fr)|(en))\.yml" \.\.\. 28 translations/', $resultLines[2]);
+        $this->assertRegExp('/translations\/MorninTranslationBundle\.((fr)|(en))\.yml" \.\.\. 28 translations/', $resultLines[3]);
         $this->assertEquals('Removing translations cache files ...', $resultLines[4]);
     }
 }

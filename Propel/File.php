@@ -1,9 +1,9 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Propel;
+namespace Mornin\Bundle\TranslationBundle\Propel;
 
-use Lexik\Bundle\TranslationBundle\Propel\om\BaseFile;
-use Lexik\Bundle\TranslationBundle\Manager\FileInterface;
+use Mornin\Bundle\TranslationBundle\Propel\om\BaseFile;
+use Mornin\Bundle\TranslationBundle\Manager\FileInterface;
 
 class File extends BaseFile implements FileInterface
 {

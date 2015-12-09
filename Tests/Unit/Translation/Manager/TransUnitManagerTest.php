@@ -1,17 +1,17 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation\Manager;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation\Manager;
 
 use Doctrine\ODM\MongoDB\UnitOfWork as ODMUnitOfWork;
 use Doctrine\ORM\UnitOfWork as ORMUnitOfWork;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitManager;
-use Lexik\Bundle\TranslationBundle\Manager\FileManager;
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitManager;
+use Mornin\Bundle\TranslationBundle\Manager\FileManager;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
 
 /**
  * Unit test for TransUnitManager.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitManagerTest extends BaseUnitTestCase
 {
@@ -26,18 +26,18 @@ class TransUnitManagerTest extends BaseUnitTestCase
     private $dm;
 
     /**
-     * @var \Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage
+     * @var \Mornin\Bundle\TranslationBundle\Storage\DoctrineORMStorage
      */
     private $ormStorage;
 
     /**
-     * @var \Lexik\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage
+     * @var \Mornin\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage
      */
     private $odmStorage;
 
     /**
      *
-     * @var Lexik\Bundle\TranslationBundle\Storage\PropelStorage
+     * @var Mornin\Bundle\TranslationBundle\Storage\PropelStorage
      */
     private $propelStorage;
 
@@ -127,7 +127,7 @@ class TransUnitManagerTest extends BaseUnitTestCase
         $fileManager = new FileManager($this->ormStorage, self::ENTITY_FILE_CLASS, $this->rootDir);
         $manager = new TransUnitManager($this->ormStorage, $fileManager, $this->rootDir);
 
-        $class = 'Lexik\Bundle\TranslationBundle\Entity\TransUnit';
+        $class = 'Mornin\Bundle\TranslationBundle\Entity\TransUnit';
         $transUnit = $manager->create('bwah', 'messages', true);
 
         $translation = $manager->addTranslation($transUnit, 'en', 'bwaaaAaAahhHHh', null, true);

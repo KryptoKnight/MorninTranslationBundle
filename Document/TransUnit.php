@@ -1,12 +1,12 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Document;
+namespace Mornin\Bundle\TranslationBundle\Document;
 
-use Lexik\Bundle\TranslationBundle\Model\TransUnit as TransUnitModel;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface;
+use Mornin\Bundle\TranslationBundle\Model\TransUnit as TransUnitModel;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnit extends TransUnitModel implements TransUnitInterface
 {

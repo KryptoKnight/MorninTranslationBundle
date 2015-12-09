@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Form\Type;
+namespace Mornin\Bundle\TranslationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Translation form type.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TranslationType extends AbstractType
 {
@@ -41,7 +41,7 @@ class TranslationType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => null,
-            'translation_domain' => 'LexikTranslationBundle',
+            'translation_domain' => 'MorninTranslationBundle',
         ));
     }
 

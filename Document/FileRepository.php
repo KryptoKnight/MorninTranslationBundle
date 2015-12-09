@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Document;
+namespace Mornin\Bundle\TranslationBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 
 /**
  * Repository for TransUnit document.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class FileRepository extends DocumentRepository
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation\Importer;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation\Importer;
 
-use Lexik\Bundle\TranslationBundle\Translation\Importer\FileImporter;
-use Lexik\Bundle\TranslationBundle\Manager\FileManager;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitManager;
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Translation\Importer\FileImporter;
+use Mornin\Bundle\TranslationBundle\Manager\FileManager;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitManager;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Loader\PhpFileLoader;
 use Symfony\Component\Finder\SplFileInfo;
@@ -13,7 +13,7 @@ use Symfony\Component\Finder\SplFileInfo;
 /**
  * FileImporter tests.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class FileImporterTest extends BaseUnitTestCase
 {

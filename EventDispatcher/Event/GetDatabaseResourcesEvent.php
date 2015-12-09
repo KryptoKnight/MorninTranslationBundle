@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\EventDispatcher\Event;
+namespace Mornin\Bundle\TranslationBundle\EventDispatcher\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class GetDatabaseResourcesEvent extends Event
 {

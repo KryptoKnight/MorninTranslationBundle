@@ -1,28 +1,28 @@
 {% extends layout %}
 
-{% trans_default_domain 'LexikTranslationBundle' %}
+{% trans_default_domain 'MorninTranslationBundle' %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/lexiktranslation/css/translation.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/Mornintranslation/css/translation.css') }}">
 {% endblock %}
 
-{% block title %}{{ 'translations.page_title'|trans({}, 'LexikTranslationBundle') }}{% endblock %}
+{% block title %}{{ 'translations.page_title'|trans({}, 'MorninTranslationBundle') }}{% endblock %}
 
 {% block content %}
     <div class="container">
         {% block toolbar %}
             <div class="page-header">
                 <h1>
-                    {{ 'translations.page_title'|trans({}, 'LexikTranslationBundle') }}
+                    {{ 'translations.page_title'|trans({}, 'MorninTranslationBundle') }}
                     <div class="pull-right">
-                        <a href="{{ path('lexik_translation_new') }}" role="button" class="btn btn-success">
+                        <a href="{{ path('Mornin_translation_new') }}" role="button" class="btn btn-success">
                             <span class="glyphicon glyphicon-plus"></span>
-                            {{ 'translations.new_translation'|trans({}, 'LexikTranslationBundle') }}
+                            {{ 'translations.new_translation'|trans({}, 'MorninTranslationBundle') }}
                         </a>
-                        <a href="{{ path('lexik_translation_overview') }}" role="button" class="btn btn-primary">
+                        <a href="{{ path('Mornin_translation_overview') }}" role="button" class="btn btn-primary">
                             <span class="glyphicon glyphicon-tasks"></span>
-                            {{ 'overview.page_title'|trans({}, 'LexikTranslationBundle') }}
+                            {{ 'overview.page_title'|trans({}, 'MorninTranslationBundle') }}
                         </a>
                     </div>
                 </h1>
@@ -30,7 +30,7 @@
         {% endblock toolbar %}
 
         {% block data_grid %}
-            {% include 'LexikTranslationBundle:Translation:_ngGrid.html.twig' %}
+            {% include 'MorninTranslationBundle:Translation:_ngGrid.html.twig' %}
         {% endblock data_grid %}
     </div>
 {% endblock %}
@@ -45,10 +45,10 @@
             profilerTokens: {{ tokens is not null ? (tokens | json_encode | raw) : 'null' }},
             toggleSimilar: '{{ toggleSimilar }}',
             url: {
-                list: '{{ path('lexik_translation_list') }}',
-                listByToken: '{{ path('lexik_translation_profiler', {'token': '-token-'}) }}',
-                update: '{{ path('lexik_translation_update', {'id': '-id-'}) }}',
-                invalidateCache: '{{ path('lexik_translation_invalidate_cache') }}'
+                list: '{{ path('Mornin_translation_list') }}',
+                listByToken: '{{ path('Mornin_translation_profiler', {'token': '-token-'}) }}',
+                update: '{{ path('Mornin_translation_update', {'id': '-id-'}) }}',
+                invalidateCache: '{{ path('Mornin_translation_invalidate_cache') }}'
             },
             label: {
                 hideCol: '{{ 'translations.show_hide_columns'|trans }}',
@@ -69,5 +69,5 @@
             }
         };
     </script>
-    <script src="{{ asset('bundles/lexiktranslation/js/translation.js') }}"></script>
+    <script src="{{ asset('bundles/Mornintranslation/js/translation.js') }}"></script>
 {% endblock %}

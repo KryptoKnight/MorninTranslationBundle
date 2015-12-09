@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Propel;
+namespace Mornin\Bundle\TranslationBundle\Propel;
 
 /**
  * Repository for Translation entity (Propel).
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TranslationRepository
 {

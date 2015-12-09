@@ -1,14 +1,14 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Util\DataGrid;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Util\DataGrid;
 
-use Lexik\Bundle\TranslationBundle\Manager\LocaleManager;
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
-use Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler;
+use Mornin\Bundle\TranslationBundle\Manager\LocaleManager;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DataGridRequestHandlerTest extends BaseUnitTestCase
 {
@@ -154,7 +154,7 @@ class DataGridRequestHandlerTest extends BaseUnitTestCase
      */
     private function getReflectionMethod($name)
     {
-        $class = new \ReflectionClass('Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler');
+        $class = new \ReflectionClass('Mornin\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler');
         $method = $class->getMethod($name);
         $method->setAccessible(true);
 
@@ -166,11 +166,11 @@ class DataGridRequestHandlerTest extends BaseUnitTestCase
      */
     private function getDataGridRequestHandler()
     {
-        $transUnitManagerMock = $this->getMockBuilder('Lexik\Bundle\TranslationBundle\Manager\TransUnitManager')
+        $transUnitManagerMock = $this->getMockBuilder('Mornin\Bundle\TranslationBundle\Manager\TransUnitManager')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $storageMock = $this->getMockBuilder('Lexik\Bundle\TranslationBundle\Storage\StorageInterface')
+        $storageMock = $this->getMockBuilder('Mornin\Bundle\TranslationBundle\Storage\StorageInterface')
             ->disableOriginalConstructor()
             ->getMock();
 

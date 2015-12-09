@@ -1,12 +1,12 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Document;
+namespace Mornin\Bundle\TranslationBundle\Document;
 
-use Lexik\Bundle\TranslationBundle\Model\Translation as TranslationModel;
-use Lexik\Bundle\TranslationBundle\Manager\TranslationInterface;
+use Mornin\Bundle\TranslationBundle\Model\Translation as TranslationModel;
+use Mornin\Bundle\TranslationBundle\Manager\TranslationInterface;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class Translation extends TranslationModel implements TranslationInterface
 {

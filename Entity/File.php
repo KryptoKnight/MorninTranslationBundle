@@ -1,15 +1,15 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Entity;
+namespace Mornin\Bundle\TranslationBundle\Entity;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Lexik\Bundle\TranslationBundle\Model\File as FileModel;
-use Lexik\Bundle\TranslationBundle\Manager\FileInterface;
+use Mornin\Bundle\TranslationBundle\Model\File as FileModel;
+use Mornin\Bundle\TranslationBundle\Manager\FileInterface;
 
 /**
  * @UniqueEntity(fields={"hash"})
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class File extends FileModel implements FileInterface
 {

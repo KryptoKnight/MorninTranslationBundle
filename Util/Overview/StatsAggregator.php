@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Util\Overview;
+namespace Mornin\Bundle\TranslationBundle\Util\Overview;
 
-use Lexik\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 
 /**
  * Class StatsAggregator
- * @package Lexik\Bundle\TranslationBundle\Util\Overview
+ * @package Mornin\Bundle\TranslationBundle\Util\Overview
  */
 class StatsAggregator
 {

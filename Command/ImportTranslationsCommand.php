@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Command;
+namespace Mornin\Bundle\TranslationBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,9 +12,9 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
  * Imports translation files content in the database.
- * Only imports files for locales defined in lexik_translation.managed_locales.
+ * Only imports files for locales defined in Mornin_translation.managed_locales.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  * @author Nikola Petkanski <nikola@petkanski.com>
  */
 class ImportTranslationsCommand extends ContainerAwareCommand
@@ -34,7 +34,7 @@ class ImportTranslationsCommand extends ContainerAwareCommand
      */
     protected function configure()
     {
-        $this->setName('lexik:translations:import');
+        $this->setName('Mornin:translations:import');
         $this->setDescription('Import all translations from flat files (xliff, yml, php) into the database.');
 
         $this->addOption('cache-clear', 'c', InputOption::VALUE_NONE, 'Remove translations cache files for managed locales.');
@@ -62,7 +62,7 @@ class ImportTranslationsCommand extends ContainerAwareCommand
 
         $locales = $this->input->getOption('locales');
         if (empty($locales)) {
-            $locales = $this->getContainer()->get('lexik_translation.locale.manager')->getLocales();
+            $locales = $this->getContainer()->get('Mornin_translation.locale.manager')->getLocales();
         }
 
         $domains = $input->getOption('domains') ? explode(',', $input->getOption('domains')) : array();
@@ -236,7 +236,7 @@ class ImportTranslationsCommand extends ContainerAwareCommand
             return;
         }
 
-        $importer = $this->getContainer()->get('lexik_translation.importer.file');
+        $importer = $this->getContainer()->get('Mornin_translation.importer.file');
         $importer->setCaseInsensitiveInsert($this->input->getOption('case-insensitive'));
 
         foreach ($finder as $file) {
@@ -292,7 +292,7 @@ class ImportTranslationsCommand extends ContainerAwareCommand
      */
     protected function getFileNamePattern(array $locales, array $domains)
     {
-        $formats = $this->getContainer()->get('lexik_translation.translator')->getFormats();
+        $formats = $this->getContainer()->get('Mornin_translation.translator')->getFormats();
 
         if (count($domains)) {
             $regex = sprintf('/((%s)\.(%s)\.(%s))/', implode('|', $domains), implode('|', $locales), implode('|', $formats));

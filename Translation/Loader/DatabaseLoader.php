@@ -1,15 +1,15 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Translation\Loader;
+namespace Mornin\Bundle\TranslationBundle\Translation\Loader;
 
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 use Symfony\Component\Translation\Loader\LoaderInterface;
 use Symfony\Component\Translation\MessageCatalogue;
 
 /**
  * Loader to load translations from the database.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DatabaseLoader implements LoaderInterface
 {

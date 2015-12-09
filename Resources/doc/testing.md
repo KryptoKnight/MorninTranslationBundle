@@ -15,12 +15,12 @@ $ export DB_NAME=acme && export DB_USER=acme && export DB_PASSWD=acme && export 
 according to default credentials for travis CI you must run
 
 ``` bash
-$ export DB_NAME=lexik_test && export DB_USER=root && unset DB_PASSWD && unset DB && unset DB_HOST && phpunit.phar
+$ export DB_NAME=Mornin_test && export DB_USER=root && unset DB_PASSWD && unset DB && unset DB_HOST && phpunit.phar
 ```
 
 Available variables are:
  - ORM - orm system, currently we support only doctrine2, we should also support propel and mongo
- - DB_NAME - database name (default: lexik_translation_test)
+ - DB_NAME - database name (default: Mornin_translation_test)
  - DB_USER - database user name (default: root)
  - DB_PASSWD - database user password (default: null)
  - DB_ENGINE - database engine (default: pdo_mysql)

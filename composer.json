@@ -1,19 +1,15 @@
 {
-    "name": "lexik/translation-bundle",
+    "name": "Mornin/translation-bundle",
     "type": "symfony-bundle",
     "description": "This bundle allow to import translation files content into the database and provide a GUI to edit translations.",
     "keywords": ["Symfony2", "bundle", "translation", "i18n"],
-    "homepage": "https://github.com/lexik/LexikTranslationBundle",
+    "homepage": "https://github.com/Mornin/MorninTranslationBundle",
     "license": "MIT",
     "prefer-stable": true,
     "authors": [
         {
             "name": "Cedric Girard",
-            "email": "c.girard@lexik.fr"
-        },
-        {
-            "name": "Dev Lexik",
-            "email": "dev@lexik.fr"
+            "email": "c.girard@Mornin.fr"
         }
     ],
     "require": {
@@ -35,7 +31,7 @@
         "propel/propel-bundle": "~1.2"
     },
     "autoload":     {
-        "psr-4": { "Lexik\\Bundle\\TranslationBundle\\": "" }
+        "psr-4": { "Mornin\\Bundle\\TranslationBundle\\": "" }
     },
     "extra": {
         "branch-alias": {

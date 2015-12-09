@@ -1,14 +1,14 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Repository\Propel;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Repository\Propel;
 
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
-use Lexik\Bundle\TranslationBundle\Propel\FileRepository;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Propel\FileRepository;
 
 /**
  * Unit test for File entity's repository class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class FileRepositoryTest extends BaseUnitTestCase
 {

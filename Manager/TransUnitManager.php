@@ -1,15 +1,15 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Manager;
+namespace Mornin\Bundle\TranslationBundle\Manager;
 
-use Lexik\Bundle\TranslationBundle\Model\Translation;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
-use Lexik\Bundle\TranslationBundle\Storage\PropelStorage;
+use Mornin\Bundle\TranslationBundle\Model\Translation;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Storage\PropelStorage;
 
 /**
  * Class to manage TransUnit entities or documents.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitManager implements TransUnitManagerInterface
 {

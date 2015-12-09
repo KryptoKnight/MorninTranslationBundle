@@ -1,14 +1,14 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation\Loader;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation\Loader;
 
-use Lexik\Bundle\TranslationBundle\Translation\Loader\DatabaseLoader;
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Translation\Loader\DatabaseLoader;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
 
 /**
  * DatabaseLoader tests.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DatabaseLoaderTest extends BaseUnitTestCase
 {
@@ -21,7 +21,7 @@ class DatabaseLoaderTest extends BaseUnitTestCase
         $this->createSchema($em);
         $this->loadFixtures($em);
 
-        $loader = new DatabaseLoader($this->getORMStorage($em), 'Lexik\\Bundle\\TranslationBundle\\Entity\\TransUnit');
+        $loader = new DatabaseLoader($this->getORMStorage($em), 'Mornin\\Bundle\\TranslationBundle\\Entity\\TransUnit');
 
         $catalogue = $loader->load(null, 'it');
         $this->assertInstanceOf('Symfony\Component\Translation\MessageCatalogue', $catalogue);

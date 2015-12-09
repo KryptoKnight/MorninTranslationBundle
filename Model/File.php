@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Model;
+namespace Mornin\Bundle\TranslationBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Base File class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 abstract class File
 {
@@ -202,9 +202,9 @@ abstract class File
     /**
      * Add translation
      *
-     * @param Lexik\Bundle\TranslationBundle\Model\Translation $translation
+     * @param Mornin\Bundle\TranslationBundle\Model\Translation $translation
      */
-    public function addTranslation(\Lexik\Bundle\TranslationBundle\Model\Translation $translation)
+    public function addTranslation(\Mornin\Bundle\TranslationBundle\Model\Translation $translation)
     {
         $translation->setFile($this);
 

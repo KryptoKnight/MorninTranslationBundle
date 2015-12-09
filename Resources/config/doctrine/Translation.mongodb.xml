@@ -4,14 +4,14 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                                             http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <embedded-document name="Lexik\Bundle\TranslationBundle\Document\Translation">
+    <embedded-document name="Mornin\Bundle\TranslationBundle\Document\Translation">
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="prePersist" />
             <lifecycle-callback type="preUpdate" method="preUpdate" />
         </lifecycle-callbacks>
 
-        <reference-one field="file" target-document="Lexik\Bundle\TranslationBundle\Document\File" inversed-by="translations">
+        <reference-one field="file" target-document="Mornin\Bundle\TranslationBundle\Document\File" inversed-by="translations">
             <cascade>
                 <persist/>
             </cascade>

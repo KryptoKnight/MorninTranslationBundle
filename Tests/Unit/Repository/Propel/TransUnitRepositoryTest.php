@@ -1,17 +1,17 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Repository\Propel;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Repository\Propel;
 
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
-use Lexik\Bundle\TranslationBundle\Propel\TransUnitRepository;
-use Lexik\Bundle\TranslationBundle\Propel\FileRepository;
-use Lexik\Bundle\TranslationBundle\Propel\FileQuery;
-use Lexik\Bundle\TranslationBundle\Propel\TranslationQuery;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\Propel\TransUnitRepository;
+use Mornin\Bundle\TranslationBundle\Propel\FileRepository;
+use Mornin\Bundle\TranslationBundle\Propel\FileQuery;
+use Mornin\Bundle\TranslationBundle\Propel\TranslationQuery;
 
 /**
  * Unit test for TransUnit entity's repository class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitRepositoryTest extends BaseUnitTestCase
 {

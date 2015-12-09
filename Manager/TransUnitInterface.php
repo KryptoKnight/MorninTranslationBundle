@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Manager;
+namespace Mornin\Bundle\TranslationBundle\Manager;
 
 /**
  * TransUnit manager interface.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 interface TransUnitInterface
 {

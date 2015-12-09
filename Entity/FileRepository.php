@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Entity;
+namespace Mornin\Bundle\TranslationBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
 /**
  * Repository for TransUnit entity.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class FileRepository extends EntityRepository
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Storage;
+namespace Mornin\Bundle\TranslationBundle\Storage;
 
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitInterface;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitInterface;
 
 /**
  * Translation storage interface.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 interface StorageInterface
 {

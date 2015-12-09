@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Translation\Exporter;
+namespace Mornin\Bundle\TranslationBundle\Translation\Exporter;
 
 /**
  * Exporter interface.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 interface ExporterInterface
 {

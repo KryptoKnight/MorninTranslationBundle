@@ -1,10 +1,10 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit\Translation;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit\Translation;
 
-use Lexik\Bundle\TranslationBundle\EventDispatcher\GetDatabaseResourcesListener;
-use Lexik\Bundle\TranslationBundle\Translation\Translator;
-use Lexik\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
+use Mornin\Bundle\TranslationBundle\EventDispatcher\GetDatabaseResourcesListener;
+use Mornin\Bundle\TranslationBundle\Translation\Translator;
+use Mornin\Bundle\TranslationBundle\Tests\Unit\BaseUnitTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Translation\MessageSelector;
 use Symfony\Component\DependencyInjection\Container;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Container;
 /**
  * Translator tests.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TranslatorTest extends BaseUnitTestCase
 {
@@ -114,7 +114,7 @@ class TranslatorTest extends BaseUnitTestCase
 
         $dispatcher = new EventDispatcher();
         $dispatcher->addListener(
-            'lexik_translation.event.get_database_resources',
+            'Mornin_translation.event.get_database_resources',
             array($listener, 'onGetDatabaseResources')
         );
 

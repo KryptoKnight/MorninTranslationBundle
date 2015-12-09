@@ -1,12 +1,12 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Util\DataGrid;
+namespace Mornin\Bundle\TranslationBundle\Util\DataGrid;
 
-use Lexik\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
-use Lexik\Bundle\TranslationBundle\Document\TransUnit as TransUnitDocument;
-use Lexik\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
-use Lexik\Bundle\TranslationBundle\Model\TransUnit;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Manager\LocaleManagerInterface;
+use Mornin\Bundle\TranslationBundle\Document\TransUnit as TransUnitDocument;
+use Mornin\Bundle\TranslationBundle\Manager\TransUnitManagerInterface;
+use Mornin\Bundle\TranslationBundle\Model\TransUnit;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -15,7 +15,7 @@ use Symfony\Component\Translation\DataCollector\TranslationDataCollector;
 use Symfony\Component\Translation\DataCollectorTranslator;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DataGridRequestHandler
 {
@@ -167,7 +167,7 @@ class DataGridRequestHandler
      * @param integer $id
      * @param Request $request
      * @throws NotFoundHttpException
-     * @return \Lexik\Bundle\TranslationBundle\Model\TransUnit
+     * @return \Mornin\Bundle\TranslationBundle\Model\TransUnit
      */
     public function updateFromRequest($id, Request $request)
     {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\EventDispatcher;
+namespace Mornin\Bundle\TranslationBundle\EventDispatcher;
 
-use Lexik\Bundle\TranslationBundle\Manager\LocaleManager;
-use Lexik\Bundle\TranslationBundle\Storage\StorageInterface;
+use Mornin\Bundle\TranslationBundle\Manager\LocaleManager;
+use Mornin\Bundle\TranslationBundle\Storage\StorageInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Finder\Finder;
 
 /**
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class CleanTranslationCacheListener
 {

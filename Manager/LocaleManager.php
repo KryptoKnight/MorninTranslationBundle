@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Manager;
+namespace Mornin\Bundle\TranslationBundle\Manager;
 
 /**
  * Manager for translations files.

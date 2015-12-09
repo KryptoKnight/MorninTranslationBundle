@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Model;
+namespace Mornin\Bundle\TranslationBundle\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * This class represent a translation for a given locale of a TransUnit object.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 abstract class Translation
 {
@@ -26,7 +26,7 @@ abstract class Translation
     protected $content;
 
     /**
-     * @var Lexik\Bundle\TranslationBundle\Model\File
+     * @var Mornin\Bundle\TranslationBundle\Model\File
      */
     protected $file;
 
@@ -84,9 +84,9 @@ abstract class Translation
     /**
      * Set file
      *
-     * @param \Lexik\Bundle\TranslationBundle\Model\File $file
+     * @param \Mornin\Bundle\TranslationBundle\Model\File $file
      */
-    public function setFile(\Lexik\Bundle\TranslationBundle\Model\File $file)
+    public function setFile(\Mornin\Bundle\TranslationBundle\Model\File $file)
     {
         $this->file = $file;
     }
@@ -94,7 +94,7 @@ abstract class Translation
     /**
      * Get file
      *
-     * @return \Lexik\Bundle\TranslationBundle\Model\File
+     * @return \Mornin\Bundle\TranslationBundle\Model\File
      */
     public function getFile()
     {

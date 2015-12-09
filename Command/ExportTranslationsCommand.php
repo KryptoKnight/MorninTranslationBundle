@@ -1,18 +1,18 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Command;
+namespace Mornin\Bundle\TranslationBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Lexik\Bundle\TranslationBundle\Manager\FileInterface;
+use Mornin\Bundle\TranslationBundle\Manager\FileInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Export translations from the database in to files.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class ExportTranslationsCommand extends ContainerAwareCommand
 {
@@ -31,7 +31,7 @@ class ExportTranslationsCommand extends ContainerAwareCommand
      */
     protected function configure()
     {
-        $this->setName('lexik:translations:export');
+        $this->setName('Mornin:translations:export');
         $this->setDescription('Export translations from the database to files.');
 
         $this->addOption('locales', 'l', InputOption::VALUE_OPTIONAL, 'Only export files for given locales. e.g. "--locales=en,de"', null);
@@ -71,7 +71,7 @@ class ExportTranslationsCommand extends ContainerAwareCommand
         $domains = $this->input->getOption('domains') ? explode(',', $this->input->getOption('domains')) : array();
 
         return $this->getContainer()
-            ->get('lexik_translation.translation_storage')
+            ->get('Mornin_translation.translation_storage')
             ->getFilesByLocalesAndDomains($locales, $domains);
     }
 
@@ -99,7 +99,7 @@ class ExportTranslationsCommand extends ContainerAwareCommand
         }
 
         $translations = $this->getContainer()
-            ->get('lexik_translation.translation_storage')
+            ->get('Mornin_translation.translation_storage')
             ->getTranslationsFromFile($file, $onlyUpdated);
 
         if (count($translations) < 1) {
@@ -147,7 +147,7 @@ class ExportTranslationsCommand extends ContainerAwareCommand
     {
         if (file_exists($outputFile)) {
             $extension = pathinfo($outputFile, PATHINFO_EXTENSION);
-            $loader = $this->getContainer()->get('lexik_translation.translator')->getLoader($extension);
+            $loader = $this->getContainer()->get('Mornin_translation.translator')->getLoader($extension);
             $messageCatalogue = $loader->load($outputFile, $file->getLocale(), $file->getDomain());
 
             $translations = array_merge($messageCatalogue->all($file->getDomain()), $translations);
@@ -169,7 +169,7 @@ class ExportTranslationsCommand extends ContainerAwareCommand
         $this->output->write(sprintf('<comment>%d translations to export: </comment>', count($translations)));
 
         try {
-            $exported = $this->getContainer()->get('lexik_translation.exporter_collector')->export(
+            $exported = $this->getContainer()->get('Mornin_translation.exporter_collector')->export(
                 $format,
                 $outputFile,
                 $translations

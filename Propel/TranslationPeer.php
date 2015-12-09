@@ -1,8 +1,8 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Propel;
+namespace Mornin\Bundle\TranslationBundle\Propel;
 
-use Lexik\Bundle\TranslationBundle\Propel\om\BaseTranslationPeer;
+use Mornin\Bundle\TranslationBundle\Propel\om\BaseTranslationPeer;
 
 class TranslationPeer extends BaseTranslationPeer
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Tests\Unit;
+namespace Mornin\Bundle\TranslationBundle\Tests\Unit;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -10,36 +10,36 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\Common\DataFixtures\Purger\MongoDBPurger;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\Tools\Setup;
-use Lexik\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage;
-use Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage;
-use Lexik\Bundle\TranslationBundle\Tests\Fixtures\TransUnitData;
-use Lexik\Bundle\TranslationBundle\Tests\Fixtures\TransUnitDataPropel;
-use Lexik\Bundle\TranslationBundle\Storage\PropelStorage;
+use Mornin\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage;
+use Mornin\Bundle\TranslationBundle\Storage\DoctrineORMStorage;
+use Mornin\Bundle\TranslationBundle\Tests\Fixtures\TransUnitData;
+use Mornin\Bundle\TranslationBundle\Tests\Fixtures\TransUnitDataPropel;
+use Mornin\Bundle\TranslationBundle\Storage\PropelStorage;
 
 /**
  * Base unit test class providing functions to create a mock entity manger, load schema and fixtures.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
 {
-    const ENTITY_TRANS_UNIT_CLASS  = 'Lexik\Bundle\TranslationBundle\Entity\TransUnit';
-    const ENTITY_TRANSLATION_CLASS = 'Lexik\Bundle\TranslationBundle\Entity\Translation';
-    const ENTITY_FILE_CLASS        = 'Lexik\Bundle\TranslationBundle\Entity\File';
+    const ENTITY_TRANS_UNIT_CLASS  = 'Mornin\Bundle\TranslationBundle\Entity\TransUnit';
+    const ENTITY_TRANSLATION_CLASS = 'Mornin\Bundle\TranslationBundle\Entity\Translation';
+    const ENTITY_FILE_CLASS        = 'Mornin\Bundle\TranslationBundle\Entity\File';
 
-    const DOCUMENT_TRANS_UNIT_CLASS  = 'Lexik\Bundle\TranslationBundle\Document\TransUnit';
-    const DOCUMENT_TRANSLATION_CLASS = 'Lexik\Bundle\TranslationBundle\Document\Translation';
-    const DOCUMENT_FILE_CLASS        = 'Lexik\Bundle\TranslationBundle\Document\File';
+    const DOCUMENT_TRANS_UNIT_CLASS  = 'Mornin\Bundle\TranslationBundle\Document\TransUnit';
+    const DOCUMENT_TRANSLATION_CLASS = 'Mornin\Bundle\TranslationBundle\Document\Translation';
+    const DOCUMENT_FILE_CLASS        = 'Mornin\Bundle\TranslationBundle\Document\File';
 
-    const PROPEL_TRANS_UNIT_CLASS  = 'Lexik\Bundle\TranslationBundle\Propel\TransUnit';
-    const PROPEL_TRANSLATION_CLASS = 'Lexik\Bundle\TranslationBundle\Propel\Translation';
-    const PROPEL_FILE_CLASS        = 'Lexik\Bundle\TranslationBundle\Propel\File';
+    const PROPEL_TRANS_UNIT_CLASS  = 'Mornin\Bundle\TranslationBundle\Propel\TransUnit';
+    const PROPEL_TRANSLATION_CLASS = 'Mornin\Bundle\TranslationBundle\Propel\Translation';
+    const PROPEL_FILE_CLASS        = 'Mornin\Bundle\TranslationBundle\Propel\File';
 
     /**
      * Create astorage class form doctrine ORM.
      *
      * @param \Doctrine\ORM\EntityManager $em
-     * @return \Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage
+     * @return \Mornin\Bundle\TranslationBundle\Storage\DoctrineORMStorage
      */
     protected function getORMStorage(\Doctrine\ORM\EntityManager $em)
     {
@@ -58,7 +58,7 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
      * Create astorage class form doctrine Mongo DB.
      *
      * @param \Doctrine\ODM\MongoDB\DocumentManager $dm
-     * @return \Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage
+     * @return \Mornin\Bundle\TranslationBundle\Storage\DoctrineORMStorage
      */
     protected function getMongoDBStorage(\Doctrine\ODM\MongoDB\DocumentManager $dm)
     {
@@ -76,7 +76,7 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Create a storage class for Propel.
      *
-     * @return \Lexik\Bundle\TranslationBundle\Storage\PropelStorage
+     * @return \Mornin\Bundle\TranslationBundle\Storage\PropelStorage
      */
     protected function getPropelStorage()
     {
@@ -172,8 +172,8 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
 
         // xml driver
         $xmlDriver = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array(
-            __DIR__.'/../../Resources/config/model'    => 'Lexik\Bundle\TranslationBundle\Model',
-            __DIR__.'/../../Resources/config/doctrine' => 'Lexik\Bundle\TranslationBundle\Entity',
+            __DIR__.'/../../Resources/config/model'    => 'Mornin\Bundle\TranslationBundle\Model',
+            __DIR__.'/../../Resources/config/doctrine' => 'Mornin\Bundle\TranslationBundle\Entity',
         ));
 
         $config = Setup::createAnnotationMetadataConfiguration(array(
@@ -192,7 +192,7 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
 
         if ($mockCustomHydrator) {
             $config->setCustomHydrationModes(array(
-                'SingleColumnArrayHydrator' => 'Lexik\Bundle\TranslationBundle\Util\Doctrine\SingleColumnArrayHydrator',
+                'SingleColumnArrayHydrator' => 'Mornin\Bundle\TranslationBundle\Util\Doctrine\SingleColumnArrayHydrator',
             ));
         }
 
@@ -214,8 +214,8 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
     protected function getMockMongoDbDocumentManager()
     {
         $prefixes = array(
-            __DIR__.'/../../Resources/config/model'    => 'Lexik\Bundle\TranslationBundle\Model',
-            __DIR__.'/../../Resources/config/doctrine' => 'Lexik\Bundle\TranslationBundle\Document',
+            __DIR__.'/../../Resources/config/model'    => 'Mornin\Bundle\TranslationBundle\Model',
+            __DIR__.'/../../Resources/config/doctrine' => 'Mornin\Bundle\TranslationBundle\Document',
         );
         $xmlDriver = new \Doctrine\Bundle\MongoDBBundle\Mapping\Driver\XmlDriver($prefixes);
 
@@ -228,7 +228,7 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
         $config->setProxyNamespace('Proxy');
         $config->setAutoGenerateProxyClasses(true);
         $config->setClassMetadataFactoryName('Doctrine\ODM\MongoDB\Mapping\ClassMetadataFactory');
-        $config->setDefaultDB('lexik_translation_bundle_test');
+        $config->setDefaultDB('Mornin_translation_bundle_test');
         $config->setHydratorDir(sys_get_temp_dir());
         $config->setHydratorNamespace('Doctrine\ODM\MongoDB\Hydrator');
         $config->setAutoGenerateHydratorClasses(true);
@@ -247,7 +247,7 @@ abstract class BaseUnitTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function getMockPropelConnection()
     {
-        if (!class_exists('Lexik\\Bundle\\TranslationBundle\\Propel\\om\\BaseFile')) {
+        if (!class_exists('Mornin\\Bundle\\TranslationBundle\\Propel\\om\\BaseFile')) {
             // classes are built in-memory.
             $builder = new \PropelQuickBuilder();
             $builder->setSchema(file_get_contents(__DIR__.'/../../Resources/config/propel/schema.xml'));

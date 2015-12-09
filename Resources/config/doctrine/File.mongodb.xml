@@ -4,9 +4,9 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                                             http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <document name="Lexik\Bundle\TranslationBundle\Document\File"
-              collection="lexik_translation_file"
-              repository-class="Lexik\Bundle\TranslationBundle\Document\FileRepository">
+    <document name="Mornin\Bundle\TranslationBundle\Document\File"
+              collection="Mornin_translation_file"
+              repository-class="Mornin\Bundle\TranslationBundle\Document\FileRepository">
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="prePersist" />
@@ -15,7 +15,7 @@
 
         <field fieldName="id" name="id" id="true" strategy="AUTO" />
 
-        <reference-many field="translations" target-document="Lexik\Bundle\TranslationBundle\Document\Translation" mapped-by="file">
+        <reference-many field="translations" target-document="Mornin\Bundle\TranslationBundle\Document\Translation" mapped-by="file">
             <cascade>
                 <persist/>
             </cascade>

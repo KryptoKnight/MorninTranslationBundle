@@ -1,11 +1,11 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Storage;
+namespace Mornin\Bundle\TranslationBundle\Storage;
 
 /**
  * Doctrine MongoDB storage class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class DoctrineMongoDBStorage extends AbstractDoctrineStorage
 {

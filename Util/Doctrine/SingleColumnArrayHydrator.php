@@ -1,13 +1,13 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Util\Doctrine;
+namespace Mornin\Bundle\TranslationBundle\Util\Doctrine;
 
 use Doctrine\ORM\Internal\Hydration\AbstractHydrator;
 
 /**
  * Hydrate result set as "numeric key => value" array.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class SingleColumnArrayHydrator extends AbstractHydrator
 {

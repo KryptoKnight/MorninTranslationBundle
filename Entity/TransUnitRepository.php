@@ -1,16 +1,16 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Entity;
+namespace Mornin\Bundle\TranslationBundle\Entity;
 
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
-use Lexik\Bundle\TranslationBundle\Model\File as ModelFile;
+use Mornin\Bundle\TranslationBundle\Model\File as ModelFile;
 
 /**
  * Repository for TransUnit entity.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class TransUnitRepository extends EntityRepository
 {
@@ -231,6 +231,6 @@ class TransUnitRepository extends EntityRepository
     protected function loadCustomHydrator()
     {
         $config = $this->getEntityManager()->getConfiguration();
-        $config->addCustomHydrationMode('SingleColumnArrayHydrator', 'Lexik\Bundle\TranslationBundle\Util\Doctrine\SingleColumnArrayHydrator');
+        $config->addCustomHydrationMode('SingleColumnArrayHydrator', 'Mornin\Bundle\TranslationBundle\Util\Doctrine\SingleColumnArrayHydrator');
     }
 }

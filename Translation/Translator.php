@@ -1,8 +1,8 @@
 <?php
 
-namespace Lexik\Bundle\TranslationBundle\Translation;
+namespace Mornin\Bundle\TranslationBundle\Translation;
 
-use Lexik\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent;
+use Mornin\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator as BaseTranslator;
 use Symfony\Component\Translation\Loader\LoaderInterface;
 use Symfony\Component\Config\ConfigCache;
@@ -10,7 +10,7 @@ use Symfony\Component\Config\ConfigCache;
 /**
  * Translator service class.
  *
- * @author Cédric Girard <c.girard@lexik.fr>
+ * @author Cédric Girard <c.girard@Mornin.fr>
  */
 class Translator extends BaseTranslator
 {
@@ -25,7 +25,7 @@ class Translator extends BaseTranslator
 
         if (!$cache->isFresh()) {
             $event = new GetDatabaseResourcesEvent();
-            $this->container->get('event_dispatcher')->dispatch('lexik_translation.event.get_database_resources', $event);
+            $this->container->get('event_dispatcher')->dispatch('Mornin_translation.event.get_database_resources', $event);
 
             $resources = $event->getResources();
             $metadata = array();
