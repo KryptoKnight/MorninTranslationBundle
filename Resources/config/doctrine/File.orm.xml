@@ -5,7 +5,7 @@
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Mornin\Bundle\TranslationBundle\Entity\File"
-            table="Mornin_translation_file"
+            table="translation_file"
             repository-class="Mornin\Bundle\TranslationBundle\Entity\FileRepository">
 
         <unique-constraints>
