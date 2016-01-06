@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/Mornintranslation/css/translation.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/mornintranslation/css/translation.css') }}">
 {% endblock %}
 
 {% block title %}{{ 'translations.page_title'|trans({}, 'MorninTranslationBundle') }}{% endblock %}
@@ -69,5 +69,5 @@
             }
         };
     </script>
-    <script src="{{ asset('bundles/Mornintranslation/js/translation.js') }}"></script>
+    <script src="{{ asset('bundles/mornintranslation/js/translation.js') }}"></script>
 {% endblock %}
