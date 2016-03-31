@@ -126,14 +126,14 @@
                        name="column.index"
                        class="form-control">
                 </textarea>
-                <input ng-switch-default
+                <textarea ng-switch-default
                        ng-if="column.edit"
                        ng-show="edit"
                        ng-model="translation[column.index]"
-                       ng-keydown="save($event, 'input')"
-                       type="text"
+                       ng-keydown="save($event, 'textarea')"
                        name="column.index"
-                       class="form-control input-sm" />
+                       class="form-control">
+                </textarea> 
             </div>
         </td>
         <td class="text-center">
