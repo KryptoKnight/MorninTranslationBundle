@@ -37,8 +37,6 @@
 
         <parameter key="Mornin_translation.overview.stats_aggregator.class">Mornin\Bundle\TranslationBundle\Util\Overview\StatsAggregator</parameter>
 
-        <parameter key="Mornin_translation.form.type.trans_unit.class">Mornin\Bundle\TranslationBundle\Form\Type\TransUnitType</parameter>
-        <parameter key="Mornin_translation.form.type.translation.class">Mornin\Bundle\TranslationBundle\Form\Type\TranslationType</parameter>
         <parameter key="Mornin_translation.form.handler.trans_unit.class">Mornin\Bundle\TranslationBundle\Form\Handler\TransUnitFormHandler</parameter>
 
         <parameter key="Mornin_translation.listener.get_database_resources.class">Mornin\Bundle\TranslationBundle\EventDispatcher\GetDatabaseResourcesListener</parameter>
@@ -139,13 +137,6 @@
         </service>
 
         <!-- Form -->
-        <service id="Mornin_translation.form.type.trans_unit" class="%Mornin_translation.form.type.trans_unit.class%">
-            <tag name="form.type" alias="lxk_trans_unit" />
-        </service>
-
-        <service id="Mornin_translation.form.type.translation" class="%Mornin_translation.form.type.translation.class%">
-            <tag name="form.type" alias="lxk_translation" />
-        </service>
 
         <service id="Mornin_translation.form.handler.trans_unit" class="%Mornin_translation.form.handler.trans_unit.class%">
             <argument type="service" id="Mornin_translation.trans_unit.manager" />

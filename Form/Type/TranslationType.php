@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Translation form type.
  *
- * @author Cédric Girard <c.girard@Mornin.fr>
+ * @author Cédric Girard <c.girard@lexik.fr>
  */
 class TranslationType extends AbstractType
 {
@@ -20,8 +20,8 @@ class TranslationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('locale', 'hidden');
-        $builder->add('content', 'textarea', array(
+        $builder->add('locale', 'Symfony\Component\Form\Extension\Core\Type\HiddenType');
+        $builder->add('content', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', array(
             'required' => false,
         ));
     }
@@ -41,7 +41,7 @@ class TranslationType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => null,
-            'translation_domain' => 'MorninTranslationBundle',
+            'translation_domain' => 'LexikTranslationBundle',
         ));
     }
 
@@ -49,6 +49,14 @@ class TranslationType extends AbstractType
      * {@inheritdoc}
      */
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
     {
         return 'lxk_translation';
     }

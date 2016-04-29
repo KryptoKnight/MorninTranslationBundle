@@ -9,7 +9,7 @@ use Mornin\Bundle\TranslationBundle\Storage\PropelStorage;
 /**
  * Class to manage TransUnit entities or documents.
  *
- * @author Cédric Girard <c.girard@Mornin.fr>
+ * @author Cédric Girard <c.girard@lexik.fr>
  */
 class TransUnitManager implements TransUnitManagerInterface
 {
@@ -209,5 +209,42 @@ class TransUnitManager implements TransUnitManagerInterface
         }
 
         return $file;
+    }
+
+    /**
+     * @param TransUnitInterface $transUnit
+     * @return bool
+     */
+    public function delete(TransUnitInterface $transUnit)
+    {
+        try {
+            $this->storage->remove($transUnit);
+            $this->storage->flush();
+
+            return true;
+
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param TransUnitInterface $transUnit
+     * @param string             $locale
+     * @return bool
+     */
+    public function deleteTranslation(TransUnitInterface $transUnit, $locale)
+    {
+        try {
+            $translation = $transUnit->getTranslation($locale);
+
+            $this->storage->remove($translation);
+            $this->storage->flush();
+
+            return true;
+
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

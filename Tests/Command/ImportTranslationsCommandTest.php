@@ -98,7 +98,7 @@ class ImportTranslationsCommandTest extends WebTestCase
         $resultLines = explode("\n", $commandTester->getDisplay());
 
         $this->assertEquals('# MorninTranslationBundle:', $resultLines[0]);
-        $this->assertRegExp('/Using dir (.)+(Mornin|Mornin\/Bundle\/)TranslationBundle\/Resources\/translations to lookup translation files/', $resultLines[1]);
+        $this->assertRegExp('/Using dir (.)+(Mornin\/translation-bundle|Mornin\/Bundle\/)TranslationBundle\/Resources\/translations to lookup translation files/', $resultLines[1]);
         $this->assertRegExp('/translations\/MorninTranslationBundle\.((fr)|(en))\.yml" \.\.\. 28 translations/', $resultLines[2]);
         $this->assertRegExp('/translations\/MorninTranslationBundle\.((fr)|(en))\.yml" \.\.\. 28 translations/', $resultLines[3]);
         $this->assertEquals('Removing translations cache files ...', $resultLines[4]);
