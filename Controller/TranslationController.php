@@ -72,7 +72,7 @@ class TranslationController extends Controller
 
         $this->get('session')->getFlashBag()->add('success', $message);
 
-        return $this->redirect($this->generateUrl('Mornin_translation_grid'));
+        return $this->redirect($this->generateUrl('mornin_translation_grid'));
     }
 
     /**
@@ -91,7 +91,7 @@ class TranslationController extends Controller
 
             $this->get('session')->getFlashBag()->add('success', $message);
 
-            $redirectUrl = $form->get('save_add')->isClicked() ? 'Mornin_translation_new' : 'Mornin_translation_grid';
+            $redirectUrl = $form->get('save_add')->isClicked() ? 'mornin_translation_new' : 'mornin_translation_grid';
 
             return $this->redirect($this->generateUrl($redirectUrl));
         }

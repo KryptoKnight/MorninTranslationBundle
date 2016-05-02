@@ -10,7 +10,7 @@
 
             <div class="col-md-6">
 
-                {{ form_start(form, {'action': path('Mornin_translation_new'), 'method': 'POST', 'attr': {'class': 'form form-vertical'}}) }}
+                {{ form_start(form, {'action': path('mornin_translation_new'), 'method': 'POST', 'attr': {'class': 'form form-vertical'}}) }}
 
                 <div class="form-group">
                     {{ form_label(form.key) }}
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="{{ path('Mornin_translation_grid') }}" class="btn btn-default">
+                    <a href="{{ path('mornin_translation_grid') }}" class="btn btn-default">
                         <span class="glyphicon glyphicon-arrow-left"></span>
                         {{ 'translations.back_to_list'|trans({}, 'MorninTranslationBundle') }}
                     </a>
