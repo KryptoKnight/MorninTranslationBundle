@@ -1,19 +1,19 @@
-Mornin_translation_overview:
+mornin_translation_overview:
     path:     /
     defaults: { _controller: "MorninTranslationBundle:Translation:overview" }
     methods:  [GET]
 
-Mornin_translation_grid:
+mornin_translation_grid:
     path:     /grid
     defaults: { _controller: "MorninTranslationBundle:Translation:grid" }
     methods:  [GET]
 
-Mornin_translation_new:
+mornin_translation_new:
     path:     /new
     defaults: { _controller: "MorninTranslationBundle:Translation:new" }
     methods:  [GET, POST]
 
-Mornin_translation_invalidate_cache:
+mornin_translation_invalidate_cache:
     path:     /invalidate-cache
     defaults: { _controller: "MorninTranslationBundle:Translation:invalidateCache" }
     methods:  [GET]
