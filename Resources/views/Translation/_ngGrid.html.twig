@@ -118,7 +118,7 @@
         <td ng-repeat="column in columns track by $index" ng-show="column.visible" ng-dblclick="enableMode('edit')">
             <span ng-show="!column.edit || (column.edit && mode != 'edit')">{{ translation[column.index] }}</span>
             <div ng-switch on="editType">
-                <textarea ng-switch-when="textarea"
+                <textarea ng-switch-default
                        ng-if="column.edit"
                        ng-show="mode == 'edit'"
                        ng-model="translation[column.index]"
@@ -126,7 +126,7 @@
                        name="column.index"
                        class="form-control">
                 </textarea>
-                <input ng-switch-default
+                <input ng-switch-when="inputtext"
                        ng-if="column.edit"
                        ng-show="mode == 'edit'"
                        ng-model="translation[column.index]"
