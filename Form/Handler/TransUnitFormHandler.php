@@ -68,12 +68,12 @@ class TransUnitFormHandler implements FormHandlerInterface
     /**
      * {@inheritdoc}
      */
-    public function getFormOptions()
+    public function getFormOptions($default)
     {
         return array(
-            'domains'           => $this->storage->getTransUnitDomains(),
+            'domains'           => array($this->storage->getTransUnitDomains(), $default['domain']),
             'data_class'        => $this->storage->getModelClass('trans_unit'),
-            'translation_class' => $this->storage->getModelClass('translation'),
+            'translation_class' => $this->storage->getModelClass('translation')
         );
     }
 
@@ -89,6 +89,7 @@ class TransUnitFormHandler implements FormHandlerInterface
 
             if ($form->isValid()) {
                 $transUnit = $form->getData();
+
                 $translations = $transUnit->filterNotBlankTranslations(); // only keep translations with a content
 
                 // link new translations to a file to be able to export them.

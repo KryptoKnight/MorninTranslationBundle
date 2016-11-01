@@ -161,7 +161,6 @@ abstract class TransUnit
                 return $translation;
             }
         }
-
         return null;
     }
 

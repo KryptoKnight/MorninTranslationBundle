@@ -72,6 +72,10 @@ app.factory('translationApiManager', ['$http', function ($http) {
             return $http.get(translationCfg.url.invalidateCache, {headers: {'X-Requested-With': 'XMLHttpRequest'}});
         },
 
+        removeEmptyDomain: function () {
+            return $http.get(translationCfg.url.removeEmptyDomain, {headers: {'X-Requested-With': 'XMLHttpRequest'}});
+        },
+
         updateTranslation: function (translation) {
             var url = translationCfg.url.update.replace('-id-', translation._id);
 
@@ -210,6 +214,18 @@ app.controller('TranslationController', [
         $scope.invalidateCache = function () {
             translationApiManager
                 .invalidateCache()
+                .success(function (responseData) {
+                    sharedMessage.set('success', 'ok-circle', responseData.message);
+                })
+                .error(function () {
+                    sharedMessage.set('danger', 'remove-circle', 'Error');
+                })
+            ;
+        };
+
+        $scope.removeEmptyDomain = function () {
+            translationApiManager
+                .removeEmptyDomain()
                 .success(function (responseData) {
                     sharedMessage.set('success', 'ok-circle', responseData.message);
                 })

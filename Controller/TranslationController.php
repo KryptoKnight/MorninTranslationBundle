@@ -76,6 +76,24 @@ class TranslationController extends Controller
     }
 
     /**
+     * Remove domain/s without key
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeDomainAction(Request $request)
+    {
+        $message = $this->get('translator')->trans('translations.domain_removed', array(), 'MorninTranslationBundle');
+        $storage = $this->get('Mornin_translation.translation_storage');
+        if ($storage->removeDomain()) {
+            return new JsonResponse(array('message' => $message));
+        }
+
+        $this->get('session')->getFlashBag()->add('success', $message);
+
+        return $this->redirect($this->generateUrl('mornin_translation_grid'));
+    }
+
+    /**
      * Add a new trans unit with translation for managed locales.
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -83,8 +101,13 @@ class TranslationController extends Controller
     public function newAction(Request $request)
     {
         $handler = $this->get('Mornin_translation.form.handler.trans_unit');
+        $params  = $request->request->all();
 
-        $form = $this->createForm('Mornin\Bundle\TranslationBundle\Form\Type\TransUnitType', $handler->createFormData(), $handler->getFormOptions());
+        $defaults = array('domain' => isset($params['domain']) ? $params['domain'] : '');
+
+        $form = $this->createForm('Mornin\Bundle\TranslationBundle\Form\Type\TransUnitType',
+            $handler->createFormData(),
+            $handler->getFormOptions($defaults));
 
         if ($handler->process($form, $request)) {
             $message = $this->get('translator')->trans('translations.successfully_added', array(), 'LexikTranslationBundle');
@@ -93,12 +116,45 @@ class TranslationController extends Controller
 
             $redirectUrl = $form->get('save_add')->isClicked() ? 'mornin_translation_new' : 'mornin_translation_grid';
 
-            return $this->redirect($this->generateUrl($redirectUrl));
+            if(!$form->get('save_add')->isClicked()){
+                return $this->redirect($this->generateUrl($redirectUrl));
+            }
         }
 
         return $this->render('MorninTranslationBundle:Translation:new.html.twig', array(
             'layout' => $this->container->getParameter('Mornin_translation.base_layout'),
             'form'   => $form->createView(),
+        ));
+    }
+
+
+    /**
+     * Add a new domain.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function domainAction(Request $request)
+    {
+        $params  = $request->request->all();
+        $storage = $this->get('Mornin_translation.translation_storage');
+        try{
+            if($request->isMethod("POST")) {
+                if (!empty($params) && $storage->addDomain($params['domain'])) {
+                     $message = $this->get('translator')->trans('translations.successfully_domain_added', array(), 'LexikTranslationBundle');
+                     $this->get('session')->getFlashBag()->add('success', $message);
+                }else {
+                    $message = $this->get('translator')->trans('translations.domain_failed', array(), 'LexikTranslationBundle');
+                    $this->get('session')->getFlashBag()->set('error', $message);
+                }
+            }
+        }catch(\Exception $exception){
+            $message = $this->get('translator')->trans('translations.domain_failed', array(), 'LexikTranslationBundle');
+            $this->get('session')->getFlashBag()->set('error', $message);
+        }
+
+        return $this->render('MorninTranslationBundle:Translation:domain.html.twig', array(
+            'layout' => $this->container->getParameter('Mornin_translation.base_layout'),
+            'domains'        => $storage->getTransUnitDomains(),
         ));
     }
 

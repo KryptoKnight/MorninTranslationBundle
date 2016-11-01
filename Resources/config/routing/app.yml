@@ -13,7 +13,17 @@ mornin_translation_new:
     defaults: { _controller: "MorninTranslationBundle:Translation:new" }
     methods:  [GET, POST]
 
+mornin_domain_new:
+    path:     /domain
+    defaults: { _controller: "MorninTranslationBundle:Translation:domain" }
+    methods:  [GET, POST]
+
 mornin_translation_invalidate_cache:
     path:     /invalidate-cache
     defaults: { _controller: "MorninTranslationBundle:Translation:invalidateCache" }
+    methods:  [GET]
+
+mornin_translation_remove_domain:
+    path:     /remove-domain
+    defaults: { _controller: "MorninTranslationBundle:Translation:removeDomain" }
     methods:  [GET]

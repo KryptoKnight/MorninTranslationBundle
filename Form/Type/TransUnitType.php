@@ -23,7 +23,8 @@ class TransUnitType extends AbstractType
         ));
         $builder->add('domain', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
             'label'   => 'translations.domain',
-            'choices' => array_combine($options['domains'], $options['domains']),
+            'data'    => isset($options['domains'][1]) ? $options['domains'][1] : '',
+            'choices' => array_combine($options['domains'][0], $options['domains'][0]),
         ));
          $builder->add('translations', 'Symfony\Component\Form\Extension\Core\Type\CollectionType', array(
             'entry_type'     => 'Mornin\Bundle\TranslationBundle\Form\Type\TranslationType',
@@ -51,6 +52,7 @@ class TransUnitType extends AbstractType
             'domains'            => array('messages'),
             'translation_class'  => null,
             'translation_domain' => 'MorninTranslationBundle',
+            'always_empty' => true,
         ));
     }
 
