@@ -50,7 +50,7 @@ interface TransUnitManagerInterface
      * @param \DateTime|null        $modifiedOn
      * @return TranslationInterface
      */
-    public function updateTranslation(TransUnitInterface $transUnit, $locale, $content, $flush = false, $merge = false, \DateTime $modifiedOn = null);
+    public function updateTranslation(TransUnitInterface $transUnit, $locale, $content, $flush = false, $merge = false, \DateTime $modifiedOn = null, $file);
 
     /**
      * Update the content of each translations for the given trans unit.
@@ -59,5 +59,5 @@ interface TransUnitManagerInterface
      * @param array                 $translations
      * @param boolean               $flush
      */
-    public function updateTranslationsContent(TransUnitInterface $transUnit, array $translations, $flush = false);
+    public function updateTranslationsContent(TransUnitInterface $transUnit, array $translations, $flush = false, $forceUpdateWithNewFile);
 }

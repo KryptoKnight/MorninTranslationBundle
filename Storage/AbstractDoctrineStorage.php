@@ -136,6 +136,16 @@ abstract class AbstractDoctrineStorage implements StorageInterface
         return $this->getTransUnitRepository()->getAllDomains();
     }
 
+    public function addDomain($domain)
+    {
+        return $this->getTransUnitRepository()->insertDomain($domain, $this->getManager());
+    }
+
+    public function removeDomain()
+    {
+        return $this->getTransUnitRepository()->removeDomain($this->getManager());
+    }
+
     /**
      * {@inheritdoc}
      */

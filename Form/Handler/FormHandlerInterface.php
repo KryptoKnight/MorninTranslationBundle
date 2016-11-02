@@ -19,10 +19,10 @@ interface FormHandlerInterface
 
     /**
      * Returns an array with options to pass to the form.
-     *
+     * @param $default Form defaults params Array
      * @return array
      */
-    public function getFormOptions();
+    public function getFormOptions($default);
 
     /**
      * Process the form and returns true if the form is valid.

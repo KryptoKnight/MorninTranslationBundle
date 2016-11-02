@@ -1,0 +1,42 @@
+{% extends layout %}
+
+{% trans_default_domain 'MorninTranslationBundle' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/mornintranslation/css/translation.css') }}">
+{% endblock %}
+
+{% block title %}{{ 'translations.page_title'|trans({}, 'MorninTranslationBundle') }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% block toolbar %}
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{ 'translations.add_domain'|trans({}, 'MorninTranslationBundle') }}</h3>
+                        <hr />
+                    </div>
+                    <div class="col-md-6">
+                        <form action="{{ path('mornin_domain_new') }}" method="post" >
+                            <div class="form-group">
+                                <label for="domain">{{ 'translations.domain'|trans({}, 'MorninTranslationBundle') }}</label>
+                                <input type="text" name="domain" id="domain" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <a href="{{ path('mornin_translation_grid') }}" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>
+                                    {{ 'translations.back_to_list'|trans({}, 'MorninTranslationBundle') }}
+                                </a>
+                                <div class="btn-group pull-right">
+                                    <input type="submit" class="btn btn-primary" value="Add Domain">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endblock toolbar %}
+    </div>
+{% endblock %}

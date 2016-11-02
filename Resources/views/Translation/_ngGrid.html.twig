@@ -33,6 +33,10 @@
                 <span class="glyphicon glyphicon-eye-close"></span>
                 {{ labels.hideCol }}
             </a>
+            <a ng-show="!autoCacheClean" ng-click="removeEmptyDomain()" role="button" class="btn btn-primary btn-sm btn-invalidate-cache">
+                <span class="glyphicon glyphicon-wrench"></span>
+                {{ labels.clearDomain }}
+            </a>
             <a ng-show="!autoCacheClean" ng-click="invalidateCache()" role="button" class="btn btn-primary btn-sm btn-invalidate-cache">
                 <span class="glyphicon glyphicon-refresh"></span>
                 {{ labels.invalidateCache }}

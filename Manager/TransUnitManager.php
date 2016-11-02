@@ -88,6 +88,7 @@ class TransUnitManager implements TransUnitManagerInterface
         $translation = null;
 
         if (!$transUnit->hasTranslation($locale)) {
+
             $class = $this->storage->getModelClass('translation');
 
             $translation = new $class();
@@ -99,6 +100,7 @@ class TransUnitManager implements TransUnitManagerInterface
             }
 
             $transUnit->addTranslation($translation);
+
 
             $this->storage->persist($translation);
 
@@ -113,7 +115,7 @@ class TransUnitManager implements TransUnitManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function updateTranslation(TransUnitInterface $transUnit, $locale, $content, $flush = false, $merge = false, \DateTime $modifiedOn = null)
+    public function updateTranslation(TransUnitInterface $transUnit, $locale, $content, $flush = false, $merge = false, \DateTime $modifiedOn = null, $file = null)
     {
         $translation = null;
         $i = 0;
@@ -126,8 +128,14 @@ class TransUnitManager implements TransUnitManagerInterface
         }
 
         if ($found) {
+
             /* @var Translation $translation */
             $translation = $transUnit->getTranslations()->get($i - 1);
+
+            if( empty($translation->getFile()) && isset($file)){
+               $translation->setFile($file);
+            }
+
             if ($merge) {
                 if ($translation->getContent() == $content) {
                     return null;
@@ -135,7 +143,6 @@ class TransUnitManager implements TransUnitManagerInterface
                 if ($translation->getCreatedAt() != $translation->getUpdatedAt() && (!$modifiedOn || $translation->getUpdatedAt() > $modifiedOn)) {
                     return null;
                 }
-
                 $newTranslation = clone $translation;
                 $this->storage->remove($translation);
                 $this->storage->flush();
@@ -161,12 +168,16 @@ class TransUnitManager implements TransUnitManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function updateTranslationsContent(TransUnitInterface $transUnit, array $translations, $flush = false)
+    public function updateTranslationsContent(TransUnitInterface $transUnit, array $translations, $flush = false, $forceUpdateWithNewFile = false)
     {
+
         foreach ($translations as $locale => $content) {
             if (!empty($content)) {
+
                 if ($transUnit->hasTranslation($locale)) {
-                    $this->updateTranslation($transUnit, $locale, $content);
+
+                    $file = $this->getTranslationFile($transUnit, $locale);
+                    $this->updateTranslation($transUnit, $locale, $content, false, false, null, $file);
 
                     if ($this->storage instanceof PropelStorage) {
                         $this->storage->persist($transUnit);
@@ -194,7 +205,7 @@ class TransUnitManager implements TransUnitManagerInterface
      */
     protected function getTranslationFile(TransUnitInterface & $transUnit, $locale)
     {
-        $file = null;
+        $file = null; $name = null;
         foreach ($transUnit->getTranslations() as $translationModel) {
             if (null !== $file = $translationModel->getFile()) {
                 break;
@@ -206,6 +217,12 @@ class TransUnitManager implements TransUnitManagerInterface
             //make sure we got the correct file for this locale and domain
             $name = sprintf('%s.%s.%s', $file->getDomain(), $locale, $file->getExtention());
             $file = $this->fileManager->getFor($name, $this->kernelRootDir.DIRECTORY_SEPARATOR.$file->getPath());
+        }else{
+            //create new trans file if not exist
+            $file = $this->fileManager->getFor(
+                sprintf('%s.%s.yml', $transUnit->getDomain(), $locale),
+                $this->kernelRootDir.'/Resources/translations'
+            );
         }
 
         return $file;

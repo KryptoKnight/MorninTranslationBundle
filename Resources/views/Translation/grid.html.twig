@@ -16,6 +16,10 @@
                 <h1>
                     {{ 'translations.page_title'|trans({}, 'MorninTranslationBundle') }}
                     <div class="pull-right">
+                        <a href="{{ path('mornin_domain_new') }}" role="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            {{ 'translations.new_domain'|trans({}, 'MorninTranslationBundle') }}
+                        </a>
                         <a href="{{ path('mornin_translation_new') }}" role="button" class="btn btn-success">
                             <span class="glyphicon glyphicon-plus"></span>
                             {{ 'translations.new_translation'|trans({}, 'MorninTranslationBundle') }}
@@ -38,6 +42,7 @@
 {% block javascript_footer %}
     {{ parent() }}
     <script>
+
         var translationCfg = {
             locales: {{ locales | json_encode | raw }},
             inputType: '{{ inputType }}',
@@ -50,12 +55,14 @@
                 update: '{{ path('mornin_translation_update', {'id': '-id-'}) }}',
                 delete: '{{ path('mornin_translation_delete', {'id': '-id-'}) }}',
                 deleteLocale: '{{ path('mornin_translation_delete_locale', {'id': '-id-', 'locale': '-locale-'}) }}',
+                removeEmptyDomain: '{{ path('mornin_translation_remove_domain') }}',
                 invalidateCache: '{{ path('mornin_translation_invalidate_cache') }}'
             },
             label: {
                 hideCol: '{{ 'translations.show_hide_columns'|trans }}',
                 toggleAllCol: '{{ 'translations.toggle_all_columns'|trans }}',
                 invalidateCache: '{{ 'translations.invalidate_cache'|trans }}',
+                clearDomain: '{{ 'translations.clear_domain'|trans }}',
                 allTranslations: '{{ 'translations.all_translations'|trans }}',
                 profiler: '{{ 'translations.profiler'|trans }}',
                 dataSource: '{{ 'translations.data_source'|trans }}',
