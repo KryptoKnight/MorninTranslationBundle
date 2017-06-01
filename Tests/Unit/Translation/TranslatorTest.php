@@ -108,6 +108,7 @@ class TranslatorTest extends BaseUnitTestCase
         $this->assertFalse(file_exists($cacheDir.'/catalogue.en.php.meta'));
     }
 
+
     protected function createTranslator($em, $cacheDir)
     {
         $listener = new GetDatabaseResourcesListener($this->getORMStorage($em), 'xxxxx');
