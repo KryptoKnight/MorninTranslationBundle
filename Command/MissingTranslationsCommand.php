@@ -12,6 +12,7 @@ namespace Mornin\Bundle\TranslationBundle\Command;
 use Doctrine\ORM\EntityManager;
 use Mornin\Bundle\TranslationBundle\Entity\TransUnit;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -73,78 +74,124 @@ EOF
 
     public function findMissingTranslations()
     {
-        $locale = $this->input->getArgument("locale");
+        try {
+            $locale = $this->input->getArgument("locale");
 
-        /**
-         * @var Kernel $kernel
-         */
-        $kernel = $this->getContainer()->get("kernel");
-        /**
-         * @var EntityManager $em
-         */
-        $em = $this->getContainer()->get("doctrine")->getManager();
+            /**
+             * @var Kernel $kernel
+             */
+            $kernel = $this->getContainer()->get("kernel");
+            /**
+             * @var EntityManager $em
+             */
+            $em = $this->getContainer()->get("doctrine")->getManager();
 
-        $transPaths = [];
-        foreach ($kernel->getBundles() as $bundle) {
-            $transPaths[] = $bundle->getPath().'/Resources/';
-            $transPaths[] = sprintf('%s/Resources/%s/', $kernel->getRootDir(), $bundle->getName());
-        }
-
-
-        $extractedCatalogue = new MessageCatalogue($locale);
-        foreach ($transPaths as $path) {
-            $path = $path.'views';
-            if (is_dir($path)) {
-                $this->getContainer()->get('translation.extractor')->extract($path, $extractedCatalogue);
+            $transPaths = [];
+            foreach ($kernel->getBundles() as $bundle) {
+                $transPaths[] = $bundle->getPath() . '/Resources/';
+                $transPaths[] = sprintf('%s/Resources/%s/', $kernel->getRootDir(), $bundle->getName());
             }
-        }
+
+            $extractedCatalogue = new MessageCatalogue($locale);
+            foreach ($transPaths as $path) {
+                $path = $path . 'views';
+                try {
+                    if (is_dir($path)) {
+                        $this->getContainer()->get('translation.extractor')->extract($path, $extractedCatalogue);
+                    }
+                }catch(\Twig_Error_Syntax $e){
+                    $this->output->writeln(("<error>The file: {$e->getFile()} has a syntax error, therefor the search on this file has been skipped.</error>"));
+                    continue;
+                }
+            }
 
 
-        $missing = [];
+            $missing = [];
 
-        foreach($extractedCatalogue->all() as $domain=>$translation){
+            foreach ($extractedCatalogue->all() as $domain => $translation) {
 
-            foreach($translation as $key=>$null) {
-
-
-                switch ($domain) {
-                    case "_undefined":
-
-                        $found = $em
-                            ->getRepository("MorninTranslationBundle:TransUnit")
-                            ->findOneBy([
-                                "key" => $key
-                            ]);
-
-                        if(!$found instanceOf TransUnit){
-                            $missing[$domain] = $key;
-                        }
+                foreach ($translation as $key => $null) {
 
 
-                        break;
-                    default:
+                    switch ($domain) {
+                        case "_undefined":
 
-                        $found = $em
-                            ->getRepository("MorninTranslationBundle:TransUnit")
-                            ->findOneBy([
-                                "key" => $key,
-                                "domain" => $domain
-                            ]);
+                            $found = $em
+                                ->getRepository("MorninTranslationBundle:TransUnit")
+                                ->findOneBy([
+                                    "key" => $key
+                                ]);
 
-                        if(!$found instanceOf TransUnit){
-                            $missing[$domain] = $key;
-                        }
-                        break;
+                            if (!$found instanceOf TransUnit) {
+                                $missing[] = [
+                                    $domain, $key
+                                ];
+                            }
+
+
+                            break;
+                        default:
+
+                            $found = $em
+                                ->getRepository("MorninTranslationBundle:TransUnit")
+                                ->findOneBy([
+                                    "key" => $key,
+                                    "domain" => $domain
+                                ]);
+
+                            if (!$found instanceOf TransUnit) {
+                                $missing[] = [
+                                    $domain, $key
+                                ];
+                            }
+
+                            break;
+                    }
+
+                }
+            }
+
+            $table = new Table($this->output);
+            $table->setHeaders(["Domain", "Key"]);
+            $table->setRows($missing);
+            $table->render();
+
+
+            if (($emails = $this->input->getOption("email")) !== null) {
+                $emails = explode(",", $emails);
+
+
+                if(!$this->getContainer()->hasParameter("mailer_transport")) {
+                    throw new \Exception("mailer_transport parameter not set, therefor email was not sent");
                 }
 
+                $message = (new \Swift_Message('List of missing translations'))
+                    ->setFrom('no-reply@mornin-translation-bundle.com')
+                    ->setTo($emails)
+                    ->setBody(
+                        $this->getContainer()->get("twig")->render(
+                            'MorninTranslationBundle:Email:missing_translations_email.html.twig',
+                            [
+                                "missing" => $missing
+                            ]
+                        ),
+                        'text/html'
+                    )
+                ;
+
+                if(!$this->getContainer()->has("mailer")){
+                    throw new \Exception("I am afraid the default mailer is not found");
+                }
+
+                $mailer = $this->getContainer()->get("mailer");
+                $mailer->send($message);
+
+                $recipients = implode("|", $emails);
+
+                $this->output->writeln("<info>The email has been sent to: {$recipients}</info>");
             }
-        }
-
-        var_dump($missing);
-
-
-        if(($emails = $this->input->getOption("email")) !== null){
-            $emails = explode(",", $emails);
+        }catch(\Exception $e){
+            $this->output->writeln(("<error>{$e->getMessage()}</error>"));
         }
     }
 
