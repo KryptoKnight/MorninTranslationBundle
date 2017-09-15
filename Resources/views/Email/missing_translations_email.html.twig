@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body style="text-align:center; font-size: 12px;">
+    <h1>List of missing Translations</h1>
+    <table style="width: 100%; text-align: left; font-size: 12px; border: 0;">
+        <tr>
+            <th style="background-color: #000000; color: #ffffff; border: 1px solid black;">Domain</th>
+            <th style="background-color: #000000; color: #ffffff; border: 1px solid black;">Key</th>
+        </tr>
+        {% for row in missing|default([]) %}
+        <tr>
+            {% for cell in row %}
+                <td style="border: 1px solid black;">{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+        This is an automated email sent via command<br/>
+        Regards,<br/>
+        System
+    </p>
+</body>
+</html>
