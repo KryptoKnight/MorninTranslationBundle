@@ -41,6 +41,7 @@ class MissingTranslationsCommand extends ContainerAwareCommand
             ->setDefinition(array(
             new InputArgument('locale', InputArgument::REQUIRED, 'The locale'),
             new InputOption('email', null, InputOption::VALUE_OPTIONAL, 'Alerts missing translations via email to recipients provided within this option field'),
+            new InputOption('template', "tpl", InputOption::VALUE_OPTIONAL, "The template you want to use to send emails")
             ))
             ->setDescription('Listing any Symfony translations that are missing in the Mornin\' translations database')
             ->setHelp(<<<'EOF'
@@ -56,8 +57,11 @@ You can find all missing translations with this command:
 
 You can also send an email for missing translations by providing the email you want to send to, for multiple emails separate them with a comma, example: darren@darren.com,darren2@darren.com
 
-  <info>php %command.full_name% de --email</info>
+  <info>php %command.full_name% de --email darren@darren.com</info>
 
+The template you want to use for sending the email, if not found it will use the default template
+
+  <info>php %command.full_name% de --email darren@darren.com --template jira</info>
 EOF
             );
 
@@ -165,12 +169,22 @@ EOF
                     throw new \Exception("mailer_transport parameter not set, therefor email was not sent");
                 }
 
+                switch($this->input->getOption("template"))
+                {
+                    case "jira":
+                        $template = 'MorninTranslationBundle:Email:missing_translations_email_jira.html.twig';
+                        break;
+                    default:
+                        $template = 'MorninTranslationBundle:Email:missing_translations_email.html.twig';
+                        break;
+                }
+
                 $message = (new \Swift_Message('List of missing translations'))
                     ->setFrom('no-reply@mornin-translation-bundle.com')
                     ->setTo($emails)
                     ->setBody(
                         $this->getContainer()->get("twig")->render(
-                            'MorninTranslationBundle:Email:missing_translations_email.html.twig',
+                            $template,
                             [
                                 "missing" => $missing
                             ]
