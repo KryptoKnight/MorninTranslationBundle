@@ -6,7 +6,9 @@ window.onload = function() {
 
 try {
     var body = $("body"),
-        doc = $(document);
+        doc = $(document),
+        modalId = "mg-trans",
+        modals = "#" + modalId;
 
     doc.ready(function () {
 
@@ -27,26 +29,22 @@ try {
 
         var me = $(this),
             locales = me.data("transLocales").split(","),
-            content = [];
+            content = me.parents("form").serialize();
 
-        for(var locale = 0; locale < locales.length; locale++){
-            content[locales[locale]] = doc.find("#trans-" + locales[locale]).val();
-        }
 
         $.ajax({
             url : me.data("action"),
             method: "PUT",
             data: content,
+            dataType: "json",
             success: function(data){
                 console.log(data);
+                doc.find(modals).modal("hide");
             }
         })
     });
 
     var modalBuilder = function(key, domain, locales, content, ajax){
-
-        var modalId = "mg-trans",
-            modals = "#" + modalId;
 
             if(typeof content.id !== "undefined"){
                 ajax = ajax.replace("-id-", content.id);
@@ -56,6 +54,7 @@ try {
 
             var modalContainer =
                 '<div class="modal" tabindex="-1" role="dialog" id="'+modalId+'">\n' +
+                '          <form>\n' +
                 '            <div class="modal-dialog" role="document">\n' +
                 '                <div class="modal-content">\n' +
                 '                    <div class="modal-header">\n' +
@@ -76,7 +75,7 @@ try {
                     val = content[locales[locale]];
                 }
                 modalContainer += '<label for="trans-'+locales[locale]+'">'+locales[locale]+':&nbsp;</label>';
-                modalContainer += '<input type="text" name="trans-'+locales[locale]+'" id="trans-'+locales[locale]+'" value="'+val+'"/><br/>';
+                modalContainer += '<input type="text" name="'+locales[locale]+'" id="trans-'+locales[locale]+'" value="'+val+'"/><br/>';
             }
             modalContainer += '  </div>\n' +
                 '                    <div class="modal-footer">\n' +
@@ -85,6 +84,7 @@ try {
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>\n' +
+                '          </form>\n' +
                 '        </div>';
 
             body.append(modalContainer);
@@ -104,8 +104,11 @@ try {
                 key = me.data("transKey"),
                 domain = me.data("transDomain"),
                 ajaxCall = me.data("transAjaxGet"),
-                ajaxSet = me.data('transAjaxSet')
+                ajaxSet = me.data('transAjaxSet'),
+                ajaxCache = me.data('transAjaxCacheClear'),
                 locales = me.data("transLocales").split(",");
+            
+            body.append('<input type="hidden" name="trans-cache-clear" id="trans-cache-clear" value="'+ajaxCache+'"');
 
             $.ajax({
                 url: ajaxCall + "/" + key + "/" + domain,

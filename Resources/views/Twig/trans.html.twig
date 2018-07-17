@@ -6,6 +6,7 @@
        data-trans-locales="{{ locales|join(",") }}"
        data-trans-ajax-get="{{ path("mornin_translation_get_trans_unit") }}"
        data-trans-ajax-set="{{ path('mornin_translation_update', {'id': '-id-'}) }}"
+       data-trans-ajax-cache-clear="{{ path('mornin_translation_invalidate_cache') }}"
     >
         {{ translate|trans(options, domain, locale) }}&nbsp;<i class="fa fa-edit"></i>
     </a>
