@@ -1,0 +1,4 @@
+mornin_translation_get_trans_unit:
+    path:     /trans-unit/{key}/{domain}
+    defaults: { _controller: "MorninTranslationBundle:Twig:getTranslation", key: null, domain: null}
+    methods:  [GET]

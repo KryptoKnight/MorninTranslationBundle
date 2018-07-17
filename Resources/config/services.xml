@@ -46,6 +46,8 @@
 
         <parameter key="Mornin_translation.importer.case_insensitive">false</parameter>
         <parameter key="Mornin_translation.token_finder.limit">15</parameter>
+
+        <parameter key="Mornin_translation.twig.trans_twig.class">Mornin\Bundle\TranslationBundle\Twig\TransTwig</parameter>
     </parameters>
 
     <services>
@@ -153,5 +155,12 @@
             <tag name="kernel.event_listener" event="Mornin_translation.event.get_database_resources" method="onGetDatabaseResources"  />
         </service>
 
+        <!-- TwigHelper -->
+        <service id="Mornin_translation.twig.twig_extention" class="%Mornin_translation.twig.trans_twig.class%">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="request_stack"/>
+            <argument>%Mornin_translation.managed_locales%</argument>
+            <tag name="twig.extension"/>
+        </service>
     </services>
 </container>

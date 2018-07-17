@@ -1,0 +1,14 @@
+{% if is_granted('ROLE_ADMIN_TRANSLATIONS') and app.environment == 'dev' and translatable|default(false) %}
+    <a href="#mg-trans"
+       class="mg-trans-trigger"
+       data-trans-key="{{ translate }}"
+       data-trans-domain="{{ domain }}"
+       data-trans-locales="{{ locales|join(",") }}"
+       data-trans-ajax-get="{{ path("mornin_translation_get_trans_unit") }}"
+       data-trans-ajax-set="{{ path('mornin_translation_update', {'id': '-id-'}) }}"
+    >
+        {{ translate|trans(options, domain, locale) }}&nbsp;<i class="fa fa-edit"></i>
+    </a>
+{% else %}
+        {{ translate|trans(options, domain, locale) }}
+{% endif %}
