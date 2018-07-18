@@ -17,3 +17,29 @@
     border: 1px solid #969696;
     padding: 5px;
 }
+#translator-trigger, #translator-trigger:hover{
+    position: fixed;
+    top: 50%;
+    left: 0;
+    background-color: white;
+    padding: 20px;
+    font-size: 20px;
+    color: inherit;
+    border-radius: 0 42px 42px 0;
+}
+#translator-trigger.off .fa-toggle-off{
+    display: inline-block;
+}
+#translator-trigger.off .fa-toggle-on{
+    display: none;
+}
+#translator-trigger.on .fa-toggle-off{
+    display: none;
+}
+#translator-trigger.on .fa-toggle-on{
+    display: inline-block;
+}
+.mg-trans-trigger:hover, .mg-trans-trigger:hover *{
+    background: #b8c6df !important;
+    color: white !important;
+}

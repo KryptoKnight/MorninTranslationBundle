@@ -1,5 +1,5 @@
 {% if is_granted('ROLE_ADMIN_TRANSLATIONS') and app.environment == 'dev' and translatable|default(false) %}
-    <a href="#mg-trans"
+    <span
        class="mg-trans-trigger"
        data-trans-key="{{ translate }}"
        data-trans-domain="{{ domain }}"
@@ -8,8 +8,8 @@
        data-trans-ajax-set="{{ path('mornin_translation_update', {'id': '-id-'}) }}"
        data-trans-ajax-cache-clear="{{ path('mornin_translation_invalidate_cache') }}"
     >
-        <span id="trans-{{ translate|replace({" " : "-"}) }}-X-{{ domain|replace({" " : "-"}) }}" data-locale="{{ locale }}">{{ translate|trans(options, domain, locale) }}</span>&nbsp;<i class="fa fa-edit"></i>
-    </a>
+        <span id="trans-{{ translate|replace({" " : "-"}) }}-X-{{ domain|replace({" " : "-"}) }}" data-locale="{{ locale }}">{{ translate|trans(options, domain, locale)|raw }}</span>
+    </span>
 {% else %}
-        {{ translate|trans(options, domain, locale) }}
+        {{ translate|trans(options, domain, locale)|raw }}
 {% endif %}

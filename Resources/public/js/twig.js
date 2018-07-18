@@ -2,21 +2,72 @@ try {
     var body = $("body"),
         doc = $(document),
         modalId = "mg-trans",
-        modals = "#" + modalId;
+        modals = "#" + modalId,
+        drops = ".modal-backdrop";
 
     doc.ready(function () {
 
-        var triggers = $(".mg-trans-trigger");
+        body.append('<a href="#" id="translator-trigger" class="off">Translation: <i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i></a>');
+
+        var triggers = doc.find(".mg-trans-trigger");
         if (triggers.length > 0) {
             triggers.each(function () {
+
                 $(this).css({
-                    "color": "inherit"
-                })
+                    "color": "inherit",
+                    "cursor" : "pointer",
+                    "padding" : "0"
+                });
+
+                var anchor = $(this).parents("a"),
+                    trigger = $(this);
+
+                if(typeof anchor !== "undefined"){
+                    var cls = anchor.attr("class"),
+                        txt = trigger.parent().html();
+                        anchor.replaceWith('<div class="mg-trans-anchor '+cls+'">'+txt+'</div>');
+                }
             });
 
             body.append('<input type="hidden" name="trans-cache-clear" id="trans-cache-clear"/>');
             body.append('<input type="hidden" name="trans-locale" id="trans-locale"/>');
-            modalTrigger(triggers);
+            doc.find("#translator-trigger").removeClass("off").addClass("on");
+            modalTrigger(doc.find(".mg-trans-trigger"));
+        }
+    });
+
+    doc.on("click", "#translator-trigger", function(e){
+        e.preventDefault();
+
+        var key = encodeURI("translator")
+            , value = encodeURI("true")
+            , url = null
+            , redirect = null
+            , href = location.href;
+
+        if($(this).hasClass("off")) {
+
+            if(href.indexOf("?") === -1){
+                url = "?" + key + "=" + value;
+            }else{
+                url = "&" + key + "=" + value;
+            }
+
+            redirect = href + url;
+            window.location = redirect;
+        }else{
+            url = key + "=" + value;
+
+            if(href.indexOf("?"+url) !== -1){
+                redirect = href.replace("?"+url, "");
+                window.location = redirect;
+            }else{
+                url = "&" + key + "=" + value;
+                redirect = href.replace(url, "");
+                window.location = redirect;
+            }
+
+
         }
     });
 
@@ -89,6 +140,8 @@ try {
 
             doc.find(modals).on('hidden.bs.modal', function(e) {
                 doc.find(modals).remove();
+                doc.find(drops).remove();
+                doc.find("body").css({ "padding-right" : 0});
             });
 
     }, modalTrigger = function(element){
@@ -134,7 +187,7 @@ try {
         });
     }, textBuilder = function(text, locale){
         doc.find("#trans-"+text._key.replace(" ", "-")+"-X-"+text._domain.replace(" ", "-"))
-            .text(text[locale]);
+            .html(text[locale]);
     };
 
 }catch(e){
