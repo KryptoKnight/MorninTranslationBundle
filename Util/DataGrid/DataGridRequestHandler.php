@@ -173,8 +173,6 @@ class DataGridRequestHandler
     {
         $transUnit = $this->storage->getTransUnitById($id);
 
-        var_dump($request->request->all());
-
         if (!$transUnit) {
             throw new NotFoundHttpException(sprintf('No TransUnit found for "%s"', $id));
         }

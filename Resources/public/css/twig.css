@@ -1,0 +1,19 @@
+#mg-trans .modal-body{
+    padding: 20px;
+}
+#mg-trans .modal-body strong, #mg-trans .modal-body label{
+    padding: 10px 0;
+    display: inline-block;
+    text-transform: uppercase;
+    width: 70px;
+}
+#mg-trans .modal-body strong.last-child{
+    padding: 10px 0 20px;
+}
+#mg-trans .modal-body textarea{
+    max-width: 450px;
+    width: 100%;
+    margin-bottom: 5px;
+    border: 1px solid #969696;
+    padding: 5px;
+}

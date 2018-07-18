@@ -1,9 +1,3 @@
-window.onload = function() {
-    if (!window.jQuery) {
-        alert("You don't have jquery installed");
-    }
-}
-
 try {
     var body = $("body"),
         doc = $(document),
@@ -19,18 +13,18 @@ try {
                     "color": "inherit"
                 })
             });
-        }
 
-        modalTrigger(triggers);
+            body.append('<input type="hidden" name="trans-cache-clear" id="trans-cache-clear"/>');
+            body.append('<input type="hidden" name="trans-locale" id="trans-locale"/>');
+            modalTrigger(triggers);
+        }
     });
 
     doc.on("click", ".trans-update", function (e) {
         e.preventDefault();
 
         var me = $(this),
-            locales = me.data("transLocales").split(","),
             content = me.parents("form").serialize();
-
 
         $.ajax({
             url : me.data("action"),
@@ -38,8 +32,17 @@ try {
             data: content,
             dataType: "json",
             success: function(data){
-                console.log(data);
+
                 doc.find(modals).modal("hide");
+
+                $.ajax({
+                    url: doc.find("#trans-cache-clear").val(),
+                    method: "GET",
+                    dataType: "json",
+                    success: function(){
+                        textBuilder(data, $("#trans-locale").val());
+                    }
+                })
             }
         })
     });
@@ -57,16 +60,10 @@ try {
                 '          <form>\n' +
                 '            <div class="modal-dialog" role="document">\n' +
                 '                <div class="modal-content">\n' +
-                '                    <div class="modal-header">\n' +
-                '                        <h5 class="modal-title">Translation Title</h5>\n' +
-                '                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
-                '                            <span aria-hidden="true">&times;</span>\n' +
-                '                        </button>\n' +
-                '                    </div>\n' +
                 '                    <div class="modal-body">\n' +
                 '                        <strong>Key:&nbsp;</strong>' +
                 '                        <span>'+key+'</span><br/>' +
-                '                        <strong>Domain:&nbsp;</strong>' +
+                '                        <strong class="last-child">Domain:&nbsp;</strong>' +
                 '                        <span>'+domain+'</span><br/>';
             for(var locale = 0; locale < locales.length; locale++){
 
@@ -75,7 +72,7 @@ try {
                     val = content[locales[locale]];
                 }
                 modalContainer += '<label for="trans-'+locales[locale]+'">'+locales[locale]+':&nbsp;</label>';
-                modalContainer += '<input type="text" name="'+locales[locale]+'" id="trans-'+locales[locale]+'" value="'+val+'"/><br/>';
+                modalContainer += '<textarea name="'+locales[locale]+'" id="trans-'+locales[locale]+'">'+val+'</textarea><br/>';
             }
             modalContainer += '  </div>\n' +
                 '                    <div class="modal-footer">\n' +
@@ -90,7 +87,7 @@ try {
             body.append(modalContainer);
             doc.find(modals).modal();
 
-            doc.find(modals).on('hidden.bs.modal', function (e) {
+            doc.find(modals).on('hidden.bs.modal', function(e) {
                 doc.find(modals).remove();
             });
 
@@ -103,15 +100,17 @@ try {
             var me = $(this),
                 key = me.data("transKey"),
                 domain = me.data("transDomain"),
-                ajaxCall = me.data("transAjaxGet"),
+                ajaxGet = me.data("transAjaxGet"),
                 ajaxSet = me.data('transAjaxSet'),
                 ajaxCache = me.data('transAjaxCacheClear'),
-                locales = me.data("transLocales").split(",");
-            
-            body.append('<input type="hidden" name="trans-cache-clear" id="trans-cache-clear" value="'+ajaxCache+'"');
+                locales = me.data("transLocales").split(","),
+                currentLocale = me.find("span").data("locale");
+
+            $("#trans-cache-clear").val(ajaxCache);
+            $("#trans-locale").val(currentLocale);
 
             $.ajax({
-                url: ajaxCall + "/" + key + "/" + domain,
+                url: ajaxGet + "/" + key + "/" + domain,
                 method: "GET",
                 success: function (content) {
                     modalBuilder(
@@ -122,7 +121,7 @@ try {
                         ajaxSet
                     );
                 },
-                error: function (error) {
+                error: function () {
                     modalBuilder(
                         key,
                         domain,
@@ -133,7 +132,10 @@ try {
                 }
             });
         });
-    }
+    }, textBuilder = function(text, locale){
+        doc.find("#trans-"+text._key.replace(" ", "-")+"-X-"+text._domain.replace(" ", "-"))
+            .text(text[locale]);
+    };
 
 }catch(e){
     console.log(e);
