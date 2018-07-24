@@ -4,3 +4,7 @@ Mornin_translation_app:
 Mornin_translation_api:
     resource: "@MorninTranslationBundle/Resources/config/routing/api.yml"
     prefix: /api
+
+Mornin_translation_twig:
+    resource: "@MorninTranslationBundle/Resources/config/routing/twig.yml"
+    prefix: /twig

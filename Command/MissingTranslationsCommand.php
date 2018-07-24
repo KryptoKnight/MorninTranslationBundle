@@ -147,6 +147,12 @@ EOF
                                 $missing[] = [
                                     $domain, $key
                                 ];
+
+                                $transUnit = new TransUnit();
+                                $transUnit->setDomain($domain);
+                                $transUnit->setKey($key);
+                                $em->persist($transUnit);
+                                $em->flush();
                             }
 
                             break;

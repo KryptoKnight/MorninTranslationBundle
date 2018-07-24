@@ -1,0 +1,15 @@
+{% if is_granted('ROLE_ADMIN_TRANSLATIONS') and app.environment == 'dev' and translatable|default(false) %}
+    <span
+       class="mg-trans-trigger"
+       data-trans-key="{{ translate }}"
+       data-trans-domain="{{ domain }}"
+       data-trans-locales="{{ locales|join(",") }}"
+       data-trans-ajax-get="{{ path("mornin_translation_get_trans_unit") }}"
+       data-trans-ajax-set="{{ path('mornin_translation_update', {'id': '-id-'}) }}"
+       data-trans-ajax-cache-clear="{{ path('mornin_translation_invalidate_cache') }}"
+    >
+        <span id="trans-{{ translate|replace({" " : "-"}) }}-X-{{ domain|replace({" " : "-"}) }}" data-locale="{{ locale }}" style="padding: 0;">{{ translate|trans(options, domain, locale)|raw }}</span>
+    </span>
+{% else %}
+        {{ translate|trans(options, domain, locale)|raw }}
+{% endif %}
