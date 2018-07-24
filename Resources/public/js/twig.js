@@ -16,7 +16,8 @@ try {
                 $(this).css({
                     "color": "inherit",
                     "cursor" : "pointer",
-                    "padding" : "0"
+                    "padding" : "0",
+                    "display" : "inline-block"
                 });
 
                 var anchor = $(this).parents("a"),
@@ -25,7 +26,10 @@ try {
                 if(typeof anchor !== "undefined"){
                     var cls = anchor.attr("class"),
                         txt = trigger.parent().html();
-                        anchor.replaceWith('<div class="mg-trans-anchor '+cls+'">'+txt+'</div>');
+
+                    cls = (typeof cls === "undefined")? "" : cls;
+
+                    anchor.replaceWith('<div class="mg-trans-anchor '+cls+'">'+txt+'</div>');
                 }
             });
 

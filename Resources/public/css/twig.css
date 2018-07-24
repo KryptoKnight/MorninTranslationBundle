@@ -43,3 +43,6 @@
     background: #b8c6df !important;
     color: white !important;
 }
+.mg-trans-anchor{
+    display: inline-block;
+}

@@ -35,7 +35,11 @@ class TwigController extends Controller
             ]);
 
             if (!$transUnit instanceof TransUnit) {
-                throw new \Exception("Trans Unit not found with key: {$key} and domain: {$domain}");
+                $transUnit = new TransUnit();
+                $transUnit->setKey($key);
+                $transUnit->setDomain($domain);
+                $this->getDoctrine()->getManager()->persist($transUnit);
+                $this->getDoctrine()->getManager()->flush();
             }
 
             $translations = [];
