@@ -35,10 +35,6 @@ class TransTwig extends \Twig_Extension
      */
     public function fn_trans($translate, array $options = [], $domain="messages", $locale=null)
     {
-        $translatable = false;
-        if($this->request->query->has("translator")){
-            $translatable = true;
-        }
 
         $currentLocale = null;
         if($locale === null &&
@@ -56,7 +52,6 @@ class TransTwig extends \Twig_Extension
             "options" => $options,
             "domain" => $domain,
             "locale" => $currentLocale,
-            "translatable" => $translatable,
             "locales" => $this->locales
         ]);
 
