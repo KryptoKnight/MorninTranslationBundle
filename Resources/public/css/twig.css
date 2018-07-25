@@ -26,6 +26,7 @@
     font-size: 20px;
     color: inherit;
     border-radius: 0 42px 42px 0;
+    z-index: 9999999999999;
 }
 #translator-trigger.off .fa-toggle-off{
     display: inline-block;
@@ -39,10 +40,29 @@
 #translator-trigger.on .fa-toggle-on{
     display: inline-block;
 }
-.mg-trans-trigger:hover, .mg-trans-trigger:hover *{
+
+.mg-trans-trigger-active{
+    cursor: pointer;
+}
+.mg-trans-trigger-active:hover, .mg-trans-trigger-active:hover *{
     background: #b8c6df !important;
     color: white !important;
 }
-.mg-trans-anchor{
-    display: inline-block;
+
+.mg-trans-trigger:not(.mg-trans-anchor-origin), .mg-trans-trigger:not(.mg-trans-anchor-origin):hover{
+    color: inherit;
+}
+
+.mg-trigger-origin{
+    color: inherit !important;
+    background-color: inherit !important;
+    font-size: inherit !important;
+    display: inline !important;
+    width: inherit !important;
+    height: inherit !important;
+    float: inherit !important;
+    text-transform: inherit !important;
+    font-style: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
