@@ -2,16 +2,22 @@ try {
     var body = $("body"),
         doc = $(document),
         modalId = "mg-trans",
+        triggerClass = "mg-trans-trigger",
         modals = "#" + modalId,
         drops = ".modal-backdrop";
+
+    var prettify = function(str) {
+        return str.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase();
+    };
 
     doc.ready(function () {
 
         body.append('<a href="#" id="translator-trigger" class="off">Translation: <i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i></a>');
 
-        var triggers = doc.find(".mg-trans-trigger");
-        if (triggers.length > 0) {
-            triggers.each(function () {
+        var triggerData = doc.find(".mg-trans-data");
+
+        if (triggerData.length > 0) {
+            triggerData.each(function () {
 
                 $(this).css({
                     "color": "inherit",
@@ -21,58 +27,63 @@ try {
                 });
 
                 var anchor = $(this).parents("a"),
-                    trigger = $(this);
+                    triggerDataElement = $(this);
 
-                if(typeof anchor !== "undefined"){
-                    var cls = anchor.attr("class"),
-                        txt = trigger.parent().html();
+                //try to find a button instead if we did not find any anchors
+                if(typeof anchor === "undefined" || anchor.length < 1){
+                    anchor = $(this).parents("button");
+                }
 
-                    cls = (typeof cls === "undefined")? "" : cls;
+                var wrapper = '<a class="'+triggerClass+'"';
 
-                    anchor.replaceWith('<div class="mg-trans-anchor '+cls+'">'+txt+'</div>');
+                $.each(triggerDataElement.data(), function(key, value){
+                    wrapper = wrapper + ' data-'+prettify(key)+'="'+value+'"';
+                });
+
+                wrapper = wrapper + '></a>';
+
+                //if there is any anchors add data to it and classes necessary to trigger the translation update modal
+                if(typeof anchor !== "undefined" && anchor.length > 0){
+
+                    $.each(triggerDataElement.data(), function(key, value){
+                        anchor.attr("data-"+prettify(key), value);
+                    });
+
+                    anchor
+                        .addClass(triggerClass)
+                        .addClass("mg-trans-anchor-origin");
+
+                }else{
+                    //wrap the text with an anchor to trigger the translation update model if it doesn't parent an anchor
+                    triggerDataElement.next("span").wrap(wrapper);
                 }
             });
 
             body.append('<input type="hidden" name="trans-cache-clear" id="trans-cache-clear"/>');
             body.append('<input type="hidden" name="trans-locale" id="trans-locale"/>');
-            doc.find("#translator-trigger").removeClass("off").addClass("on");
-            modalTrigger(doc.find(".mg-trans-trigger"));
         }
     });
 
     doc.on("click", "#translator-trigger", function(e){
         e.preventDefault();
 
-        var key = encodeURI("translator")
-            , value = encodeURI("true")
-            , url = null
-            , redirect = null
-            , href = location.href;
-
         if($(this).hasClass("off")) {
-
-            if(href.indexOf("?") === -1){
-                url = "?" + key + "=" + value;
-            }else{
-                url = "&" + key + "=" + value;
-            }
-
-            redirect = href + url;
-            window.location = redirect;
+            $("."+triggerClass).each(function(){
+                $(this).addClass(triggerClass+"-active");
+            });
+            $(this).removeClass("off").addClass("on");
         }else{
-            url = key + "=" + value;
-
-            if(href.indexOf("?"+url) !== -1){
-                redirect = href.replace("?"+url, "");
-                window.location = redirect;
-            }else{
-                url = "&" + key + "=" + value;
-                redirect = href.replace(url, "");
-                window.location = redirect;
-            }
-
-
+            $("."+triggerClass).each(function(){
+                $(this).removeClass(triggerClass+"-active");
+            });
+            $(this).removeClass("on").addClass("off");
         }
+    });
+
+    doc.on("click", ".mg-trans-trigger-active", function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        modalTrigger($(this));
     });
 
     doc.on("click", ".trans-update", function (e) {
@@ -95,7 +106,8 @@ try {
                     method: "GET",
                     dataType: "json",
                     success: function(){
-                        textBuilder(data, $("#trans-locale").val());
+                        console.log(data);
+                        textBuilder(data, doc.find("#trans-locale").val());
                     }
                 })
             }
@@ -150,48 +162,44 @@ try {
 
     }, modalTrigger = function(element){
 
-        element.click(function(e){
-            e.preventDefault();
-            e.stopPropagation();
+        var me = element,
+            key = me.data("transKey"),
+            domain = me.data("transDomain"),
+            ajaxGet = me.data("transAjaxGet"),
+            ajaxSet = me.data('transAjaxSet'),
+            ajaxCache = me.data('transAjaxCacheClear'),
+            locales = me.data("transLocales").split(","),
+            currentLocale = me.find("span").data("locale");
 
-            var me = $(this),
-                key = me.data("transKey"),
-                domain = me.data("transDomain"),
-                ajaxGet = me.data("transAjaxGet"),
-                ajaxSet = me.data('transAjaxSet'),
-                ajaxCache = me.data('transAjaxCacheClear'),
-                locales = me.data("transLocales").split(","),
-                currentLocale = me.find("span").data("locale");
+        $("#trans-cache-clear").val(ajaxCache);
+        $("#trans-locale").val(currentLocale);
 
-            $("#trans-cache-clear").val(ajaxCache);
-            $("#trans-locale").val(currentLocale);
-
-            $.ajax({
-                url: ajaxGet + "/" + key + "/" + domain,
-                method: "GET",
-                success: function (content) {
-                    modalBuilder(
-                        key,
-                        domain,
-                        locales,
-                        content,
-                        ajaxSet
-                    );
-                },
-                error: function () {
-                    modalBuilder(
-                        key,
-                        domain,
-                        locales,
-                        [],
-                        ajaxSet
-                    )
-                }
-            });
+        $.ajax({
+            url: ajaxGet + "/" + key + "/" + domain,
+            method: "GET",
+            success: function (content) {
+                modalBuilder(
+                    key,
+                    domain,
+                    locales,
+                    content,
+                    ajaxSet
+                );
+            },
+            error: function () {
+                modalBuilder(
+                    key,
+                    domain,
+                    locales,
+                    [],
+                    ajaxSet
+                )
+            }
         });
     }, textBuilder = function(text, locale){
         doc.find("#trans-"+text._key.replace(" ", "-")+"-X-"+text._domain.replace(" ", "-"))
             .html(text[locale]);
+        $("#mgUIBlock").remove();
     };
 
 }catch(e){
