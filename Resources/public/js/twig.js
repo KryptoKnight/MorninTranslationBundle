@@ -11,7 +11,7 @@ try {
     };
 
     doc.ready(function () {
-
+        
         var triggerData = doc.find(".mg-trans-data");
 
         if (triggerData.length > 0) {
