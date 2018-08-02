@@ -11,14 +11,12 @@ try {
     };
 
     doc.ready(function () {
-
-
+        
         var triggerData = doc.find(".mg-trans-data");
 
         if (triggerData.length > 0) {
-            
-            body.append('<a href="#" id="translator-trigger" class="off">Translation: <i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i></a>');
 
+            body.append('<a href="#" id="translator-trigger" class="off">Translation: <i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i></a>');
 
             triggerData.each(function () {
 
