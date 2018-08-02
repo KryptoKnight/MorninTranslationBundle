@@ -135,20 +135,17 @@ EOF
 
                             break;
                         default:
-
                             $found = $em
                                 ->getRepository("MorninTranslationBundle:TransUnit")
                                 ->findOneBy([
                                     "key" => $key,
                                     "domain" => $domain
                                 ]);
-
                             if (!$found instanceOf TransUnit) {
                                 $missing[] = [
                                     $domain, $key
                                 ];
                             }
-
                             break;
                     }
 
