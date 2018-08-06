@@ -37,7 +37,9 @@ class TransTwig extends \Twig_Extension
     {
 
         $currentLocale = null;
-        if($locale === null &&
+        if($this->request->getLocale() !== null && $locale === null){
+            $currentLocale = $this->request->getLocale();
+        } else if($locale === null &&
             method_exists($this->request, "getSession") &&
             $this->request->getSession()->has("_locale")) {
             $currentLocale = $this->request->getSession()->get("_locale");
