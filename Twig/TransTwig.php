@@ -60,9 +60,4 @@ class TransTwig extends \Twig_Extension
         ]);
 
     }
-
-    public function fn_modal()
-    {
-
-    }
 }
