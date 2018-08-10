@@ -52,7 +52,8 @@ try {
 
                     anchor
                         .addClass(triggerClass)
-                        .addClass("mg-trans-anchor-origin");
+                        .addClass("mg-trans-anchor-origin")
+                        .attr("data-href", anchor.attr("href"));
 
                 }else{
                     //wrap the text with an anchor to trigger the translation update model if it doesn't parent an anchor
@@ -79,6 +80,8 @@ try {
             });
             $(this).removeClass("on").addClass("off");
         }
+
+        anchorUndo(triggerClass);
     });
 
     doc.on("click", ".mg-trans-trigger-active", function(e){
@@ -201,6 +204,14 @@ try {
         doc.find("#trans-"+text._key.replace(" ", "-")+"-X-"+text._domain.replace(" ", "-"))
             .html(text[locale]);
         $("#mgUIBlock").remove();
+    }, anchorUndo = function(triggerClass){
+        $("."+triggerClass).each(function(e){
+            if($(this).hasClass(triggerClass+"-active")){
+                $(this).attr("href", "#");
+            }else{
+                $(this).attr("href", $(this).data("href"));
+            }
+        });
     };
 
 }catch(e){
