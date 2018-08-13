@@ -179,8 +179,9 @@ try {
         $("#trans-locale").val(currentLocale);
 
         $.ajax({
-            url: ajaxGet + "/" + key + "/" + domain,
+            url: ajaxGet,
             method: "GET",
+            data: {"domain" : domain, "key" : key },
             success: function (content) {
                 modalBuilder(
                     key,
