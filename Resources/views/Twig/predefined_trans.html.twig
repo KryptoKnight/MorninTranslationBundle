@@ -1,0 +1,10 @@
+{% if is_granted('ROLE_ADMIN_TRANSLATIONS') and app.environment == 'dev' %}
+    <div class="mg-trans-predefined">
+            <div class="container">
+                <h2>Pre-defined Translations</h2>
+                {% for trans in translations %}
+                    {% include "MorninTranslationBundle:Twig:trans.html.twig" with trans %}
+                {% endfor %}
+            </div>
+    </div>
+{% endif %}

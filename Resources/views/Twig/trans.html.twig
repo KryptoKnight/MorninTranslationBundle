@@ -1,4 +1,7 @@
 {% if is_granted('ROLE_ADMIN_TRANSLATIONS') and app.environment == 'dev' %}
+    {% if has_key_title|default(false) %}
+       <strong>Key:</strong>&nbsp;{{ translate }}&nbsp;,&nbsp;<strong>Value:</strong>&nbsp;
+    {% endif %}
     <var
        class="mg-trans-data hidden"
        data-trans-key="{{ translate }}"
@@ -10,7 +13,10 @@
     >
         &nbsp;
     </var>
-    <span id="trans-{{ translate|replace({" " : "-"}) }}-X-{{ domain|replace({" " : "-"}) }}" data-locale="{{ locale }}" class="mg-trigger-origin">{{ translate|trans(options, domain, locale)|raw }}</span>
+    <span id="trans-{{ translate|replace({" " : "-"}) }}-X-{{ domain|replace({" " : "-"}) }}" data-locale="{{ locale }}" class="mg-trigger-origin">{{ translate|trans(options|default([]), domain, locale)|raw }}</span>
+    {% if has_key_title|default(false) %}
+        <br/>
+    {% endif %}
 {% else %}
-        {{ translate|trans(options, domain, locale)|raw }}
+        {{ translate|trans(options|default([]), domain, locale)|raw }}
 {% endif %}
