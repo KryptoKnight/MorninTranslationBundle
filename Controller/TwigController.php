@@ -9,6 +9,7 @@
 namespace Mornin\Bundle\TranslationBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
 use Mornin\Bundle\TranslationBundle\Entity\Translation;
 use Mornin\Bundle\TranslationBundle\Entity\TransUnit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,25 +20,25 @@ use Symfony\Component\Serializer\Serializer;
 class TwigController extends Controller
 {
     /**
-     * @param $key
-     * @param $domain
+     * @param Request $request
      * @return Response
      */
-    public function getTranslationAction($key, $domain)
+    public function getTranslationAction(Request $request)
     {
         try {
+            $params = $request->query->all();
             /**
              * @var TransUnit $transUnit
              */
             $transUnit = $this->getDoctrine()->getRepository(TransUnit::class)->findOneBy([
-                "key" => $key,
-                "domain" => $domain
+                "key" => $params["key"],
+                "domain" => $params["domain"]
             ]);
 
             if (!$transUnit instanceof TransUnit) {
                 $transUnit = new TransUnit();
-                $transUnit->setKey($key);
-                $transUnit->setDomain($domain);
+                $transUnit->setKey($params["key"]);
+                $transUnit->setDomain($params["domain"]);
                 $this->getDoctrine()->getManager()->persist($transUnit);
                 $this->getDoctrine()->getManager()->flush();
             }
