@@ -66,3 +66,19 @@
     padding: 0 !important;
     margin: 0 !important;
 }
+
+.mg-trans-predefined{
+    background-color: #ddd;
+    border: 1px solid black;
+    padding: 30px 0;
+}
+
+.mg-trans-predefined h2{
+    color: black;
+    margin: 0 0 15px;
+}
+
+.mg-trans-predefined .container .mg-trans-trigger{
+    color: #e3132c;
+    text-decoration: underline;
+}
